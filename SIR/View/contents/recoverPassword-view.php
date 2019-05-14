@@ -6,40 +6,16 @@
 <link href="<?php echo SERVERURL; ?>public/css/parsley.css" rel="stylesheet" type="text/css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-<!--  header  -->
-<link rel="stylesheet" href="public/homepage/css/bootstrap.css">
-<link rel="stylesheet" href="<?php echo SERVERURL; ?>public/css/estilos.css">
 
 <?php 
+    include_once 'View/templates/link.php';
     include 'View/contents/includes/config1.php';
     include 'View/contents/includes/functionBD.php';
  ?>
     <section class="bienvenidos">
-      <header class="encabezado navbar-fixed-top" role="banner" id="encabezado">
-            <div class="container">
-                  <a>
-                    <img src="public/img/Rodillos GBP2.PNG " style="width: 150px; height: 70px">
-                </a>
-
-                
-                <button  type="button" class="boton-menu hidden-md-up" data-toggle="collapse" data-target="#menu-principal" aria-expanded="false">
-                    <i class="fa fa-bars" aria-hidden="true"></i></button>
-
-                
-
-                <nav id="menu-principal" class="collapse">
-                    <ul>
-                        <li><a href="<?php echo SERVERURL ?>Inicio">Inicio</a></li>
-                        <li class="active"><a href="<?php echo SERVERURL ?>recoverPassword">Recuperar Contraseña</a></li>
-                        <li><a href="<?php echo SERVERURL ?>login">Inicio de Sesión</a></li>
-
-                    </ul>
-                </nav>
-
-            </div>
-        </header>
     <article id="particles-js" class="particulas-fondo"></article>
     <section class="contenedor" id="contenedor">
+        <a href="index.php" class="volver"><span class="icon-arrow-left" id="atras"></span></a>
         <article class="login">
 
 
@@ -65,9 +41,12 @@
                 </div>
 
                 
-                <div class="row">
+                <div class="form-actions">
                     <input type="submit"  name="correo" class="btn btn-primary" value="Aceptar">
-                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                     &nbsp&nbsp
                     <a href="<?php echo SERVERURL; ?>login"><input type="button" value="Cancelar" class="btn btn-danger" style="float: right;"></a>
                 
                 </div>
@@ -128,7 +107,7 @@ $Consulta ->  execute();
                     $cabeceras .= "Content-Type: text/html; charset=UTF-8\r\n";
 
                     $mensaje = '<html><body>';
-                    $mensaje .= '<p>Hola '. $nombre .' Con el siguiente codigo puedes recuperar tu contraseña  </p>';
+                    $mensaje .= '<p>Hola '. $nombre .' En el siguiente codigo puedes recuperar tu contraseña  </p>';
                     $mensaje .= '<p>Codigo: ' .$codigo. '</p>';
                     $mensaje .= "</body></html>";
                     $para = "$mail";

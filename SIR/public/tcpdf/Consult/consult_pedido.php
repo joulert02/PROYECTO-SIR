@@ -59,7 +59,7 @@
         <tr>
 
             <td  style="width: 28%; color: #444444;">
-                <img src="http://localhost:8080/SIR/public/img/Rodillos GBP.png" style="width: 100px; height: 100px" alt="">
+                <img src="http://localhost/SIR/public/img/Rodillos GBP.png" style="width: 100px; height: 100px" alt="">
                 
             </td>
                   <td style:"45%">

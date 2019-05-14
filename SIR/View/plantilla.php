@@ -1,5 +1,3 @@
-<?php 
-    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +7,9 @@
     <title><?php echo COMPANY; ?></title>
         
     <?php 
-        
+        session_start(['name' => 'SIR']);
+        include 'view/templates/link.php';
         require_once 'view/templates/script.php';
-        include 'view/templates/linkHomepage.php';
     ?>
 </head>
 
@@ -24,35 +22,30 @@
         
        if($vtr=="login" || $vtr=="404"):
             if ($vtr=="login") {
-        session_start();
-        require_once 'view/contents/login-view.php';
+                require_once 'view/contents/login-view.php';
             } else {
                 require_once 'view/contents/404-view.php';
             }
         
        else:
-        session_start();
-        
+               
         if ($vtr=="./view/contents/recoverPassword-view.php" || $vtr=="./view/contents/resetPassword-view.php"|| $vtr=="./view/contents/Inicio-view.php"|| $vtr=="./view/contents/403-view.php"|| $vtr=="./view/contents/404-view.php"|| $vtr=="./view/contents/E403-view.php"|| $vtr=="./view/contents/codePassword-view.php") {
             echo '<script src="'.SERVERURL.'public/js/particulas.js"></script>';
-         require_once $vtr; 
+            require_once $vtr; 
         } else {
-        $varsesion = $_SESSION['usu'];
-        if ($varsesion== null || $varsesion=='') {
-            header("location:E403");
-            die();
-        }
+            $varsesion = 1212;
+            if ($varsesion== null || $varsesion=='') {
+                header("location:E403");
+                die();
+            }   
     ?>
 <?php require_once 'view/templates/menu.php';
-include 'view/templates/link.php';
  ?> 
 
     <section class="contentPage">
         <?php require_once $vtr; ?>
     </section>  
-        <?php  ?>
-    <?php };endif;?>   
     <script src="public/js/main.js"></script>
-
+    <?php };endif;?>   
 </body>
 </html>

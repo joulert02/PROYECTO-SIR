@@ -80,9 +80,7 @@ require_once "Controller/categoryController.php";
 		public function listar()
 		{
 			$datosEntry = array();
-			$consultar = "SELECT ent.id_entrada, pro.nombre_producto, pro.referencia, dent.cantidad, ent.fecha_entrada 
-			FROM tbl_entrada ent INNER JOIN tbl_detalle_entrada dent ON ent.id_entrada = dent.Entrada_id_entrada INNER JOIN 
-			tbl_producto pro ON pro.id_producto = dent.Producto_id_producto ORDER BY id_entrada";
+			$consultar = "SELECT * FROM `tbl_entrada` ORDER BY `id_entrada` desc";
 			try{
 				$resultado = $this->conexion->query($consultar);
 				// $resultado = execute();
@@ -90,9 +88,9 @@ require_once "Controller/categoryController.php";
 				foreach ($resultado->fetchAll(PDO::FETCH_OBJ) as $dato) {
 					$entrada = new entryModel();
 					$entrada->__SET('Entrada_id_entrada', $dato->id_entrada);
-					$entrada->__SET('nombre_producto', $dato->nombre_producto);
-					$entrada->__SET('referencia', $dato->referencia);
-					$entrada->__SET('cantidad', $dato->cantidad);
+					// $entrada->__SET('nombre_producto', $dato->nombre_producto);
+					// $entrada->__SET('referencia', $dato->referencia);
+					// $entrada->__SET('cantidad', $dato->cantidad);
 					$entrada->__SET('fecha_entrada', $dato->fecha_entrada);
 
 					$datosEntry[] = $entrada;

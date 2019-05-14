@@ -47,7 +47,7 @@ $data = $conexionbd->query("SELECT * FROM tbl_usuario");
             </div>
             <div class="col-md-6 mb-3">
                   <label for="username" class="control-label">Correo</label>
-                  <input type="email" class="form-control" name="correo" required data-parsley-type="email" data-parsley-length="[5,25]" value="<?php echo $resultado->correo; ?>">  <br>
+                  <input type="email" class="form-control" name="correo" required data-parsley-type="email" value="<?php echo $resultado->correo; ?>">  <br>
             </div>
             <div class="col-md-12 mb-3">
                     <a href="<?php echo SERVERURL ?>changePassword" title="change password" class="btn btn-danger pull-right">Cambiar contraseña</a>

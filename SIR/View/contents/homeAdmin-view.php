@@ -1,6 +1,6 @@
 <?php
-$usu=$_SESSION['usu'];
-$nombre=$_SESSION['nombre'];
+$usu=$_SESSION['usuario_sir'];
+$nombre=$_SESSION['correo_sir'];
 include 'Model/productModel.php';
 $controlp= new productoModel();
 

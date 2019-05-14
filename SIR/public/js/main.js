@@ -1,4 +1,5 @@
 $('.FormularioAjax').submit(function(e){
+    
     e.preventDefault();
     
     var form=$(this);
@@ -23,6 +24,11 @@ $('.FormularioAjax').submit(function(e){
         textoAlerta="Quieres realizar la operación solicitada";
     }
 
+    var instance =$('#validate_form').parsley();
+    if (!instance.isValid()) {
+        respuesta.html('<div class="alert alert-danger" role="alert">Debes llenar los campos requeridos</div>');
+    }else{
+        
     swal({
         title: "¿Estás seguro?",   
         text: textoAlerta,
@@ -59,6 +65,7 @@ $('.FormularioAjax').submit(function(e){
                 $(".RespuestaAjax").html(data);
                 respuesta.html(data);
                 console.log(data);
+                window.location.href="listPerson";
             },
             error: function() {
                 $(".RespuestaAjax").html(data);
@@ -68,4 +75,6 @@ $('.FormularioAjax').submit(function(e){
         });
         return false;
       });
+    }
+
 });

@@ -47,55 +47,95 @@ $(document).ready(function() {
             <thead style="background-color: #F3F2F2;color: black; font-weight: bold;">
           <tr>
 			<td scope="col" style="display: none">ID Entrada</td>
-			<td scope="col">Nombre Producto</td>
-			<td scope="col">Referencia</td>
-			<td scope="col">Cantidad</td>
+			<!-- <td scope="col">Nombre Producto</td> -->
+			<!-- <td scope="col">Referencia</td> -->
+			<!-- <td scope="col">Cantidad</td> -->
 			<td scope="col">Fecha Entrada</td>
 			<td scope="col">Acciones</td>
 		</tr>
 		</thead>
 		<tbody>
-            <tr>
 			<?php $contador=1; foreach ($control->listar() as $fila):
         ?>
-				<td scope="row" style="display: none"><?php echo $fila->Entrada_id_entrada; ?></td>
-				<td><?php echo $fila->nombre_producto; ?></td>
-				<td><?php echo $fila->referencia; ?></td>
-				<td><?php echo $fila->cantidad; ?></td>
-				<td><?php echo $fila->fecha_entrada; ?></td>
-				<td>
-        <a href="<?php echo SERVERURL; ?>editEntry?id=<?php echo $fila->Entrada_id_entrada; ?>" title="Editar" class='btn btn-primary' ><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
-      <?php $_SESSION['id'.$contador]=$fila->Entrada_id_entrada;
-      $contador++;
-      ?>
-		</td>
-            </tr>
+        <tr idDetalle="<?php echo $fila->Entrada_id_entrada; ?>">
+          <td scope="row" style="display: none"><?php echo $fila->Entrada_id_entrada; ?></td>
+          <!-- <td><?php //echo $fila->nombre_producto; ?></td> -->
+          <!-- <td><?php //echo $fila->referencia; ?></td> -->
+          <!-- <td><?php //echo $fila->cantidad; ?></td> -->
+          <td><?php echo $fila->fecha_entrada; ?></td>
+          <td>
+          <a href="<?php echo SERVERURL; ?>editEntry?id=<?php echo $fila->Entrada_id_entrada; ?>" title="Editar" class='btn btn-primary' ><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
+            <?php $_SESSION['id'.$contador]=$fila->Entrada_id_entrada;
+            $contador++;
+            ?>
+            <a href="#" class="btn btn-primary mostrarDetalle" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-eye" aria-hidden="true"></i></a> 
+          </td>
+      </tr>
       <?php endforeach; ?> 
         </tbody>
-
     </table>
-</div>
+  </div>
+
+ <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <center>
+        <h4 class="modal-title" id="myModalLabel">Informacion De Pedido</h4>
+      </center>
+      </div>
+      <div class="modal-body">
+
+      <table id="grid" class="table table-striped table-bordered nowrap" style="width:100%">
+        <thead style="background-color: #F3F2F2;color: black; font-weight: bold;">
+          <tr>
+			      <td scope="col" style="display: none">ID Entrada</td>
+			      <td scope="col">Nombre Producto</td>
+			      <td scope="col">Referencia</td>
+			      <td scope="col">Cantidad</td>
+			      <!-- <td scope="col">Acciones</td> -->
+		        </tr>
+		    </thead>
+        <tbody id="detalle">
+        
+        </tbody>
+        </table>
+      <div class="modal-footer">
+       <center>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      </center>
+      </div>
+      </div>
+    </div>
+  </div>
 
 <script>
-        jQuery(document).ready(function($){
-            $('.delete').on('click',function(){
-                var getLink = $(this).attr('href');
-                swal({
-                        title: 'Estás seguro de eliminar este registro?',
-                        text: "Será eliminado permanentemente!",
-                        type: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Si, eliminar!',
-                        closeOnConfirm: false
-                        },function(){
-                          swal("¡Eliminado!", 
-                         "Eliminado Correctamente.", 
-                         "success",); 
-                        window.location.href = getLink
-                    });
-                return false;
+       jQuery(document).ready(function($){
+            $('.mostrarDetalle').on('click',function(){
+              let element = $(this)[0].parentElement.parentElement;
+              let id = $(element).attr('iddetalle');
+              const postData = {
+                  id : id,
+               }
+               $.post('http://localhost/SIR/Controller/entryController.php', postData, function(response) {
+                  console.log(response);
+                  let productos = JSON.parse(response);
+                  let template = '';
+                  productos.forEach(productos => {
+                      template += `
+                          <tr>
+                          <td>${productos.nombre_producto}</td>
+                          <td>${productos.referencia}</td>
+                          <td>${productos.cantidad}</td>
+                          <td>${productos.fecha_entrada}</td>
+                          </tr>
+                      `;
+                  });
+                  $('#detalle').html(template);
+                });
             });
         });
     </script>

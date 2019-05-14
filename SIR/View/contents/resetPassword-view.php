@@ -6,10 +6,6 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="<?php echo SERVERURL; ?>public/css/parsley.css" rel="stylesheet" type="text/css">
 
-<!--  header  -->
-<link rel="stylesheet" href="public/homepage/css/bootstrap.css">
-<link rel="stylesheet" href="<?php echo SERVERURL; ?>public/css/estilos.css">
-
 
 <?php
  require_once 'Controller/user_controller.php';
@@ -21,36 +17,14 @@ $resultado=$control->buscar('id_usuario');
 ?>
 
     <section class="bienvenidos">
-      <header class="encabezado navbar-fixed-top" role="banner" id="encabezado">
-            <div class="container">
-                  <a>
-                    <img src="public/img/Rodillos GBP2.PNG " style="width: 150px; height: 70px">
-                </a>
-
-                
-                <button  type="button" class="boton-menu hidden-md-up" data-toggle="collapse" data-target="#menu-principal" aria-expanded="false">
-                    <i class="fa fa-bars" aria-hidden="true"></i></button>
-
-                
-
-                <nav id="menu-principal" class="collapse">
-                    <ul>
-                        <li><a href="<?php echo SERVERURL ?>Inicio">Inicio</a></li>
-                        <li class="active"><a href="<?php echo SERVERURL ?>codePaswword">Restablecer Contraseña</a></li>
-                        <li><a href="<?php echo SERVERURL ?>login">Inicio de Sesión</a></li>
-
-                    </ul>
-                </nav>
-
-            </div>
-        </header>
     <article id="particles-js" class="particulas-fondo"></article>
 
 <section class="contenedor" id="contenedor">
+<a href="index.php" class="volver"><span class="icon-arrow-left" id="atras"></span></a>
         <article style="height: 410px;" class="login">
       <form method="post" id="validate_form" class="forget-form">
         <br><br>
-        <h3 class="font-green">Nueva Contraseña</h3>
+        <h3 class="font-green">¿Nueva Contraseña?</h3>
               <br>
               <h4>Nueva Contraseña</h4>
               <input type="password" class="form-control" ID="pass2" name="password" required data-parsley-length="[6, 10]" data-parsley-trigger="keyup" placeholder="Nueva contraseña"><button style="height: 35px;"  id="show_password" class="btn btn-light" type="button" onclick="mostrarPassword()"><li style="color:black;" class="fa fa-eye-slash icon"></li></button>
@@ -59,7 +33,7 @@ $resultado=$control->buscar('id_usuario');
     
               <input type="password" class="form-control" name="confirm" ID="txtPassword2" required data-parsley-equalto="#pass2" data-parsley-trigger="keyup" placeholder="Confirme Contraseña contraseña"><button style="height: 35px;"  id="show_password" class="btn btn-light" type="button" onclick="mostrarPassword2()"><li style="color:black;" class="fa fa-eye-slash iconn"></li></button>
         <br>
-        <div class="row">
+        <div class="col-md-8 ">
               <input type="submit" name="enviar" class="btn btn-primary" value="Guardar">
               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                   <a href="<?php echo SERVERURL?>login"><input type="button" value="Cancelar" class="btn btn-danger" style="float: right;"></a>

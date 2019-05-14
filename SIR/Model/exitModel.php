@@ -83,9 +83,8 @@ require_once "Model/tipoSalidaModel.php";
 		public function listar()
 		{
 			$datosExit = array();
-			$consultar = "SELECT sali.id_salida,sali.tipo_salida_tipo_salida, pro.nombre_producto, pro.referencia, dexit.cantidad, sali.fecha_salida 
-			FROM tbl_salida sali INNER JOIN tbl_detalle_salida dexit ON sali.id_salida = dexit.Salida_id_salida INNER JOIN 
-			tbl_producto pro ON pro.id_producto = dexit.Producto_id_producto ORDER BY id_salida";
+			$consultar = "SELECT fecha_salida,id_salida, ts.nombre FROM `tbl_salida` s JOIN tbl_tipo_salida  
+			ts on tipo_salida_tipo_salida = ts.tipo_salida";
 			try{
 				$resultado = $this->conexion->query($consultar);
 				// $resultado = execute();
@@ -93,11 +92,11 @@ require_once "Model/tipoSalidaModel.php";
 				foreach ($resultado->fetchAll(PDO::FETCH_OBJ) as $dato) {
 					$salida = new exitModel();
 					$salida->__SET('Salida_id_salida', $dato->id_salida);
-					$salida->__SET('nombre_producto', $dato->nombre_producto);
-					$salida->__SET('referencia', $dato->referencia);
-					$salida->__SET('cantidad', $dato->cantidad);
+					// $salida->__SET('nombre_producto', $dato->nombre_producto);
+					// $salida->__SET('referencia', $dato->referencia);
+					// $salida->__SET('cantidad', $dato->cantidad);
 					$salida->__SET('fecha_salida', $dato->fecha_salida);
-					$salida->__SET('tipo_salida_tipo_salida', $dato->tipo_salida_tipo_salida);
+					$salida->__SET('tipo_salida_tipo_salida', $dato->nombre);
 
 					$datosExit[] = $salida;
 				}

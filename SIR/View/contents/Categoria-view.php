@@ -91,7 +91,7 @@ $(document).ready(function() {
       </article>
     </section>
   </main>
-<script src="http://localhost:8080/SIR/ajax/Categoria.js"></script>
+<script src="http://localhost/SIR/ajax/Categoria.js"></script>
 <script>  
 $(document).ready(function(){  
      var instance =$('#categoria-form').parsley();

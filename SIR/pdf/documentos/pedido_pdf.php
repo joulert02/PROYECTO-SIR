@@ -28,9 +28,7 @@
 	$condiciones=mysqli_real_escape_string($con,(strip_tags($_REQUEST['condiciones'], ENT_QUOTES)));
 	$comentarios=mysqli_real_escape_string($con,(strip_tags($_REQUEST['comentarios'], ENT_QUOTES)));
 	//Fin de variables por GET
-	$sql=mysqli_query($con, "select LAST_INSERT_ID(id_pedido) as last from tbl_pedido order by id_pedido desc limit 0,1 ");
-	$rw=mysqli_fetch_array($sql);
-	$numero_pedido=$rw['last'];	
+	
 	$perfil=mysqli_query($con,"select * from perfil limit 0,1");//Obtengo los datos de la emprea
 	$rw_perfil=mysqli_fetch_array($perfil);
 	
@@ -49,6 +47,9 @@
 		$sumador_total=0;
 		$date=date("Y-m-d H:i:s");
 		$insert=mysqli_query($con,"INSERT INTO tbl_pedido VALUES ('','$proveedor','$condiciones','Liliana Ospina','$date','$date','$transporte','$estadoP','$comentarios')");
+		$sql=mysqli_query($con, "select LAST_INSERT_ID(id_pedido) as last from tbl_pedido order by id_pedido desc limit 0,1 ");
+		$rw=mysqli_fetch_array($sql);
+		$numero_pedido=$rw['last'];	
 		echo '
 		<table cellspacing="0" style="width: 100%;">
         <tr>
@@ -109,6 +110,9 @@
 		// Insert en la tabla detalle_pedido
 		$insertar = "INSERT INTO tbl_detalle_pedido(`Pedido_id_pedido`, `Producto_id_producto`, `cantidad`, `precio`, `sub_total1`, `descuento`, `sub_total2`, `iva_total`, `total_pagar`)
 		VALUES (?,?,?,?,?,?,?,?,?)";
+		if ($numero_pedido==null || $numero_pedido==0 || $numero_pedido="") {
+			$numero_pedido = 1;
+		}
 		$conec->prepare($insertar)->execute(array(
 			$numero_pedido,
 			$id_producto,

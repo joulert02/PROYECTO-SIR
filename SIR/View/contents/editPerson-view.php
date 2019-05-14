@@ -130,15 +130,15 @@
 				</div>
 				<div class="col-md-4 mb-3">
 					<label>Documento</label>
-					<input type="TEXT" name="documento" class="form-control" required data-parsley-length="[10,14]" data-parsley-type="number" value="<?php echo $resultado->__GET('documento') ?>">
+					<input type="text" name="documento" class="form-control" required data-parsley-length="[10,14]" data-parsley-type="number" value="<?php echo $resultado->__GET('documento') ?>">
 				</div>
 				<div class="col-md-4 mb-3">
 					<label>Teléfono</label>
-					<input type="number" name="telefono" class="form-control" data-parsley-length="[7,10]" data-parsley-type="number" value="<?php echo $resultado->telefono ?>">
+					<input type="text" name="telefono" class="form-control" data-parsley-length="[7,10]" data-parsley-type="number" value="<?php echo $resultado->telefono ?>">
 				</div>
 				<div class="col-md-4 mb-3">
 					<label>Celular</label>
-					<input type="number" name="nro_Celular" class="form-control" required data-parsley-length="[10,12]" data-parsley-type="number" value="<?php echo $resultado->nro_Celular ?>"><br>
+					<input type="text" name="nro_Celular" class="form-control" required data-parsley-length="[10,12]" data-parsley-type="number" value="<?php echo $resultado->nro_Celular ?>"><br>
 				</div>
 				<div class="col-md-4 mb-3">
 					<label>Dirección</label>

@@ -160,7 +160,7 @@ $(document).ready(function(){
 </script>
 
 
- <script src="http://localhost:8080/SIR/ajax/Salida.js"></script>
+ <script src="http://localhost/SIR/ajax/Salida.js"></script>
 
 
 
@@ -232,7 +232,7 @@ if ($CantidadPersonas = (count($contarRegistros)==0)) {
                               });  
                         </script>';    
 		 ?>
-		 <!-- <meta http-equiv="refresh" content="0; url=http://localhost:8080/SIR/listEntry">  -->
+		 <!-- <meta http-equiv="refresh" content="0; url=http://localhost/SIR/listEntry">  -->
 <?php 
 	}
 } ?>

@@ -21,7 +21,7 @@ $(document).ready(function(){
           e.preventDefault();
         } else {
             if (edit==null || edit==false) {
-                $.post('http://localhost:8080/SIR/Controller/tipoSalidaController.php', postData, function(response){
+                $.post('http://localhost/SIR/Controller/tipoSalidaController.php', postData, function(response){
                     listar();
                     $('#tipoSalida-form').trigger('reset');
                     console.log(response);
@@ -46,7 +46,7 @@ $(document).ready(function(){
                     }
                 });
             }else if (edit==true) {
-                $.post('http://localhost:8080/SIR/Controller/tipoSalidaController.php', postData, function(response){
+                $.post('http://localhost/SIR/Controller/tipoSalidaController.php', postData, function(response){
                     listar();
                     $('#tipoSalida-form').trigger('reset');
                     console.log(response);
@@ -81,7 +81,7 @@ $(document).ready(function(){
             $('#btnR').html("Registrar");
             }
         $.ajax({
-            url : 'http://localhost:8080/SIR/Controller/tipoSalidaController.php',
+            url : 'http://localhost/SIR/Controller/tipoSalidaController.php',
             type : 'GET',
             success : function(response){
                 // console.log(response);
@@ -123,7 +123,7 @@ $(document).ready(function(){
           closeOnConfirm: true 
         }, 
         function(){ 
-            $.post('http://localhost:8080/SIR/Controller/tipoSalidaController.php', postData, function(response) {
+            $.post('http://localhost/SIR/Controller/tipoSalidaController.php', postData, function(response) {
                 console.log(response);
                 listar();
             });
@@ -134,7 +134,7 @@ $(document).ready(function(){
         $('#btnR').html("Actualizar");
         let element = $(this)[0].parentElement.parentElement;
         let consul = $(element).attr('tipo_salida');
-        $.post('http://localhost:8080/SIR/Controller/tipoDocumentoController.php', {consul}, function(response) {
+        $.post('http://localhost/SIR/Controller/tipoDocumentoController.php', {consul}, function(response) {
             console.log(response);
             let categor = JSON.parse(response);
             $('#tipoSalida').val(categor[0].nombre);

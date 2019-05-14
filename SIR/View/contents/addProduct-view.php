@@ -34,7 +34,7 @@ $person = new personController();
         </div>
         <div class="col-md-4 mb-3">
           <label>Nombre Producto*</label>
-          <input type="text" name="nombre_producto" class="form-control" placeholder="Ingrese Nombre del producto"  required data-parsley-length="[3,25]" >
+          <input type="text" name="nombre_producto" class="form-control" placeholder="Ingrese Nombre del producto"  required data-parsley-length="[3,20]" >
         </div>
         <div class="col-md-4 mb-3">
           <label>Precio Unitario*</label>

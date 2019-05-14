@@ -68,9 +68,6 @@ class personController extends personModel
 			$guardarPerson = personModel::agregar_persona_modelo($dataPerson);
 
 			if ($guardarPerson->rowCount() >= 1) {
-				echo '<div class="alert alert-success" role="alert">
-				La persona se ha registrado con exito en el sistema
-		</div>';
 				$alerta = [
 					"Alerta" => "limpiar",
 					"Titulo" => "Persona Registrada",
@@ -78,9 +75,6 @@ class personController extends personModel
 					"Tipo" => "success"
 				];
 			} else {
-				echo '<div class="alert alert-danger" role="alert">
-				No hemos podido registrar la persona
-			</div>';
 				$alerta = [
 					"Alerta" => "simple",
 					"Titulo" => "Ocurrio un error inesperado",

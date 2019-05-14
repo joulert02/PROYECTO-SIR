@@ -1,5 +1,5 @@
 <?php
-        $conexion=new PDO("mysql:host=localhost;dbname=s.i.r", "root", "");
+        $conexion=new PDO("mysql:host=localhost;dbname=s.i.r;charset=utf8", "root", "");
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 if (isset($_REQUEST['Producto_id_producto']) && isset($_REQUEST['cantidad'])) {
     $Producto_id_producto=$_REQUEST['Producto_id_producto'];

@@ -1,6 +1,8 @@
 <?php 
 require_once "Model/pedidoModel.php";
-	//CONEXION
+require_once "Controller/personController.php";
+$persona = new personController();
+//CONEXION
 	$conec = new PDO("mysql:host=localhost;dbname=s.i.r", "root", "");
 	// set the PDO error mode to exception
 	$conec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -62,10 +64,10 @@ $(document).ready(function() {
             <thead style="background-color: #F3F2F2;color: black; font-weight: bold;">
                 <tr>
                                 <td style="display: none" >Id Pedido</td> 
-                                <td >Id Cliente</td>
                                 <td >Vendedor</td>
                                 <td >Fecha Pedido</td>
                                 <td >Fecha Vencimiento</td>
+                                <td >Cliente</td>
                                 <td >Despachado Por</td>
                                 <td >Estado</td>
                                 <td >Acciones</td>
@@ -73,27 +75,24 @@ $(document).ready(function() {
             </thead>
 
         <tbody>
-            <tr>
-      <?php foreach ($datopedido as $r):?>
-      
-                 <td style="display: none"> <?php echo $r->__GET('id_pedido'); ?> </td> 
-                <td> <?php echo $r->__GET('Persona_id_persona');?> </td>
-                <td> <?php echo $r->__GET('vendedor'); ?> </td>
-                                <td> <?php echo $r->__GET('fecha_pedido'); ?> </td>
-                <td> <?php echo $r->__GET('fecha_vencimiento');?> </td>
-                <td> <?php echo $r->__GET('despachado_por'); ?> </td>
-                <td> <?php $estado = ($r->__GET('estado')==1) ? "Activo" : "Inactivo";  echo $estado; ?> </td>
-                <td>
-<a href="edit_pedido.php?id_pedido=<?php echo $r->id_pedido; ?>" title="Editar" class='btn btn-primary' ><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
-
-<a href="#" data-target="#miModal" data-toggle="modal" class='btn btn-primary' id='<?php echo $r->id_pedido; ?>'><i class="fa fa-eye" aria-hidden="true"></i></a> 
-
-<a href="View/contents/voucherOrder-view.php?id_pedido=<?php echo $r->id_pedido; ?>" title="Comprobante" class="btn btn-primary" target="_blank" role="button"><i class="fa fa-file" aria-hidden="true"></i></a>
-
-<!-- <a href="eliminar_pedido.php?id_pedido=<?php echo $r->id_pedido; ?>" title="Eliminar" class='btn btn-danger delete' ><i class="fa fa-trash-o" aria-hidden="true" ></i></a> -->
-
-                </td>
-            </tr>
+      <?php foreach ($datopedido as $r):
+        $personaResult = $persona->buscar($r->__GET('Persona_id_persona'));
+          ?>
+        <tr iddetalle="<?php echo $r->__GET('id_pedido'); ?>">
+          <td style="display: none"> <?php echo $r->__GET('id_pedido'); ?> </td> 
+          <td> <?php echo $r->__GET('vendedor'); ?> </td>
+                          <td> <?php echo $r->__GET('fecha_pedido'); ?> </td>
+          <td> <?php echo $r->__GET('fecha_vencimiento');?> </td>
+          <td> <?php echo $personaResult->__GET('nombres')." ".$personaResult->__GET('apellidos'); ?></td>
+          <td> <?php echo $r->__GET('despachado_por'); ?> </td>
+          <td> <?php $estado = ($r->__GET('estado')==1) ? "Pendiente" : "Pago";  echo $estado; ?> </td>
+          <td>
+            <a href="edit_pedido.php?id_pedido=<?php echo $r->id_pedido; ?>" title="Editar" class='btn btn-primary' ><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
+            <a href="#" class="btn btn-primary mostrarDetalle" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-eye" aria-hidden="true"></i></a> 
+            <a href="View/contents/voucherOrder-view.php?id_pedido=<?php echo $r->id_pedido; ?>" title="Comprobante" class="btn btn-primary" target="_blank" role="button"><i class="fa fa-file" aria-hidden="true"></i></a>
+            <!-- <a href="eliminar_pedido.php?id_pedido=<?php echo $r->id_pedido; ?>" title="Eliminar" class='btn btn-danger delete' ><i class="fa fa-trash-o" aria-hidden="true" ></i></a> -->
+           </td>
+        </tr>
       <?php endforeach; ?> 
         </tbody>
 
@@ -101,78 +100,65 @@ $(document).ready(function() {
 </div>
 </div>
 
-<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document" id="modal_size">
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <center>
-        <h4 class="modal-title" id="myModalLabel">Informacion Del Pedido</h4>
+        <h4 class="modal-title" id="myModalLabel">Informacion De La Entrada</h4>
       </center>
       </div>
       <div class="modal-body">
 
-               <label>Id Pedido:</label>
-               <?php echo $r->__GET('vendedor'); ?> 
-               <br>
-               <label>Id Persona:</label>
-               <?php echo $r->__GET('');?> 
-               <br>Persona_id_persona
-               <label>Vendador:</label>
-               <?php echo $r->__GET('vendedor'); ?> 
-               <br>
-               <label>Fecha Pedido:</label>
-               <?php echo $r->__GET('fecha_pedido'); ?> 
-               <br>
-               <label>Fecha Vencimiento:</label>
-               <?php echo $r->__GET('fecha_vencimiento');?> 
-               <br>
-               <label>Despachado Por:</label>
-               <?php echo $r->__GET('despachado_por'); ?> 
-               <br>
-               <label>Estado:</label>
-               <?php echo $r->__GET('estado'); ?> 
-              
-               <div class="modal-footer">
-                <center>
+      <table id="grid" class="table table-striped table-bordered nowrap" style="width:100%">
+        <thead style="background-color: #F3F2F2;color: black; font-weight: bold;">
+          <tr>
+			      <td scope="col" style="display: none">ID Entrada</td>
+			      <td scope="col">Nombre Producto</td>
+			      <td scope="col">Referencia</td>
+			      <td scope="col">Cantidad</td>
+			      <!-- <td scope="col">Acciones</td> -->
+		        </tr>
+		    </thead>
+        <tbody id="detalle">
+        
+        </tbody>
+        </table>
+      <div class="modal-footer">
+       <center>
         <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
       </center>
       </div>
       </div>
     </div>
   </div>
-</div>
-<?php
-?>
 
 <script>
-        jQuery(document).ready(function($){
-            $('.delete').on('click',function(){
-                var getLink = $(this).attr('href');
-                swal({
-                        title: 'Estás seguro de eliminar este registro?',
-                        text: "Será eliminado permanentemente!",
-                        type: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Si, eliminar!',
-                        closeOnConfirm: false
-                        },function(){
-                          swal("¡Eliminado!", 
-                         "Eliminado Correctamente.", 
-                         "success",); 
-                        window.location.href = getLink
-                    });
-                return false;
+       jQuery(document).ready(function($){
+            $('.mostrarDetalle').on('click',function(){
+              let element = $(this)[0].parentElement.parentElement;
+              let id = $(element).attr('iddetalle');
+              const postData = {
+                  id : id,
+               }
+               $.post('http://localhost/SIR/Controller/pedidoController.php', postData, function(response) {
+                  console.log(response);
+                  let productos = JSON.parse(response);
+                  let template = '';
+                  productos.forEach(productos => {
+                      template += `
+                          <tr>
+                          <td>${productos.nombre_producto}</td>
+                          <td>${productos.referencia}</td>
+                          <td>${productos.cantidad}</td>
+                          </tr>
+                      `;
+                  });
+                  $('#detalle').html(template);
+                });
             });
         });
     </script>
-
-
-  <script src="../../../Assets/js/table-datatables-responsive.js"></script>
-
-</body>
-</html>

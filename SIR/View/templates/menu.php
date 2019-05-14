@@ -84,14 +84,14 @@ while ($row = $data->fetch()) {
                     <li><a href="<?php echo SERVERURL; ?>listPedido">Consultar pedido</a></li>
                 </ul>
             </li>
-            <li><a href="<?php echo SERVERURL; ?>Categoria"><i class="icono izquierda icon-spinner9"></i>Categoria</a>
-              <!--  <ul> -->
-                  <!--  <li><a href="<?php echo SERVERURL; ?>Categoria"> Categoria</a></li> -->
-                  <!--  <li><a href="<?php echo SERVERURL; ?>tipoSalida">Tipo Salida</a></li> -->
+            <li><a href="#"><i class="icono izquierda icon-spinner9"></i>Gestionar Tipos<i class="icono derecha icon-circle-down"></i></a>
+                <ul>
+                    <li><a href="<?php echo SERVERURL; ?>Categoria">Tipo Categoria</a></li>
+                    <li><a href="<?php echo SERVERURL; ?>tipoSalida">Tipo Salida</a></li>
                    <!--  <li><a href="<?php echo SERVERURL; ?>addCategory">Registrar Categoria</a></li>
                     <li><a href="<?php echo SERVERURL; ?>listCategory">Consultar Categoria</a></li> -->
                     <!-- <li><a href="<?php echo SERVERURL; ?>tipoDocumento/">Gestión Tipo Documento</a></li> -->
-              <!--  </ul>-->
+                </ul>
             </li>
             <li><a href="<?php echo SERVERURL; ?>listComment"><i class="icono izquierda icon-circle-down"></i>Mensajes</a></li>
         </ul>

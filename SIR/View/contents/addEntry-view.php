@@ -143,7 +143,7 @@ $(document).ready(function(){
 </script>
 
 
- <script src="http://localhost:8080/SIR/ajax/Entrada.js"></script>
+ <script src="http://localhost/SIR/ajax/Entrada.js"></script>
 
 
 
