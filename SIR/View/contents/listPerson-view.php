@@ -206,7 +206,7 @@ $(document).ready(function() {
             closeOnConfirm: true 
           }, 
           function(){ 
-              $.post('http://localhost:8080/SIR/Controller/personController.php', postData, function(response) {
+              $.post('http://localhost:8080/PROYECTO-SIR/SIR/Controller/personController.php', postData, function(response) {
                   console.log(response);
                   location.reload();
               });
@@ -238,11 +238,11 @@ $(document).ready(function() {
         //                   swal("¡Eliminado!", 
         //                  "Eliminado Correctamente.", 
         //                  "success",); 
-        //                  $.post('http://localhost:8080/SIR/Controller/personController.php', postData, function(response) {
+        //                  $.post('http://localhost:8080/PROYECTO-SIR/SIR/Controller/personController.php', postData, function(response) {
         //       });
         //             });
         //         return false;
         //     });
         // });
     </script>
-		<!--<meta http-equiv="refresh" content="0; url=http://localhost:8080/SIR/listPerson">
+		<!--<meta http-equiv="refresh" content="0; url=http://localhost:8080/PROYECTO-SIR/SIR/listPerson">

@@ -198,7 +198,7 @@ function myFunction() {
                                       });  
                                 </script>';    
 		?>
-		<meta http-equiv="refresh" content="0; url=http://localhost:8080/SIR/listEntry">
+		<meta http-equiv="refresh" content="0; url=http://localhost:8080/PROYECTO-SIR/SIR/listEntry">
 <?php 
 	}
 } ?>

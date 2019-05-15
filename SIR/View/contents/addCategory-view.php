@@ -101,7 +101,7 @@ if (isset($_POST['registrar'])) {
                                       });  
                                 </script>';    
 		?>
-		<meta http-equiv="refresh" content="0; url=http://localhost:8080/SIR/addCategory">
+		<meta http-equiv="refresh" content="0; url=http://localhost:8080/PROYECTO-SIR/SIR/addCategory">
 <?php 
 	}
 } ?>

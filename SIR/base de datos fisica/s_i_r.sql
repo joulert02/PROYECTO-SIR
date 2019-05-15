@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-05-2019 a las 07:00:00
--- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.3.1
+-- Tiempo de generación: 15-05-2019 a las 14:20:43
+-- Versión del servidor: 10.1.38-MariaDB
+-- Versión de PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -148,8 +148,15 @@ CREATE TABLE `tbl_detalle_pedido` (
 
 INSERT INTO `tbl_detalle_pedido` (`Pedido_has_Producto`, `Pedido_id_pedido`, `Producto_id_producto`, `cantidad`, `precio`, `sub_total1`, `descuento`, `sub_total2`, `iva_total`, `total_pagar`) VALUES
 (1, NULL, 14, 1, 5000, 1000, 2, 500, 500, 500),
-(2, NULL, 15, 1, 4000, 1000, 2, 500, 500, 500),
-(3, NULL, 17, 1, 6000, 1000, 2, 500, 500, 500);
+(2, 3, 15, 1, 4000, 1000, 2, 500, 500, 500),
+(3, 3, 16, 1, 4500, 1000, 2, 500, 500, 500),
+(4, 3, 17, 1, 6000, 1000, 2, 500, 500, 500),
+(5, 1, 14, 1, 5000, 1000, 2, 500, 500, 500),
+(6, 1, 15, 1, 4000, 1000, 2, 500, 500, 500),
+(7, 1, 16, 1, 4500, 1000, 2, 500, 500, 500),
+(8, 1, 17, 1, 6000, 1000, 2, 500, 500, 500),
+(9, 2, 14, 1, 5000, 1000, 2, 500, 500, 500),
+(10, 2, 15, 1, 4000, 1000, 2, 500, 500, 500);
 
 -- --------------------------------------------------------
 
@@ -214,7 +221,9 @@ CREATE TABLE `tbl_pedido` (
 --
 
 INSERT INTO `tbl_pedido` (`id_pedido`, `Persona_id_persona`, `num_fact`, `vendedor`, `fecha_pedido`, `fecha_vencimiento`, `despachado_por`, `estado`, `comentarios`) VALUES
-(210, 1, 500, 'Liliana Ospina', '2019-05-09', '2019-05-09', 'Recogido', 0, 'graacias');
+(1, 8, 501, 'Liliana Ospina', '2019-05-09', '2019-05-09', 'Recogido', 1, 'mateo rangel es gay'),
+(2, 8, 501, 'Liliana Ospina', '2019-05-09', '2019-05-09', 'Recogido', 1, 'good in my life'),
+(3, 7, 502, 'Liliana Ospina', '2019-05-09', '2019-05-09', 'Recogido', 0, 'asdjoasd');
 
 -- --------------------------------------------------------
 
@@ -261,7 +270,17 @@ INSERT INTO `tbl_persona` (`id_persona`, `nombres`, `apellidos`, `tipo_documento
 (17, 'Sebastian', 'Florez', 1, '1000307303', '6583261', '3015228801', 'Crra 98 #99 - 65', 'Medellin', 'Antioquia', 2, 1),
 (18, 'Daniel', 'Rodriguez', 1, '1023456683', '5238874', '3149218732', 'Crra 52 #100 - 78', 'Medellin', 'Antioquia', 2, 1),
 (19, 'Rodillos Mastder', 'RMD', 3, '6483542141', '3518926', '3122249116', 'Clle 54 A #55 - 23', 'Bogota', 'Cundinamarca', 1, 1),
-(20, 'Inversiones GBP', 'IGBP', 3, '7597432118', '2550427', '3028567341', 'Crra 50 C #6 sur - 16', 'Medellin', 'Antioquia', 1, 1);
+(20, 'Inversiones GBP', 'IGBP', 3, '7597432118', '2550427', '3028567341', 'Crra 50 C #6 sur - 16', 'Medellin', 'Antioquia', 1, 1),
+(21, 'norberto', 'talaigua', 1, '12345621212', '123121321', '2313132132', '321321321', '212112', '122112', 2, 1),
+(22, 'qweqwe', 'qweqwe', 2, '1231231232', '12312312312', '312312312', '123123', '1231231', '23123123', 2, 1),
+(23, 'sadwq', 'ewqewq', 2, '23123123123', '123123', '12312312', '12312312', '3123123', '123123', 1, 1),
+(24, 'asdasdasdasdas', 'dasdasdasdasd', 3, '24324324234', '234234234', '234234234234', '23423423423', '4234234234', '23423423', 1, 1),
+(25, 'asdasdasdasd', 'asdasdasdasd', 1, '1234567812345', '12345678', '167812345678', '12345678', '12345678', '12345678', 2, 1),
+(26, '12312312312312', '12312312312312', 2, '12312312312312', '1231231231', '123123123112', '12312312312312', '12312312312312', '12312312312312', 2, 1),
+(27, '123454654', '123454654', 1, '12345465423', '123454654', '1234546542', '123454654', '123454654', '123454654', 1, 1),
+(28, '1234567891', '1234567891', 1, '1234567891', '1234567891', '1234567891', '1234567891', '1234567891', '1234567891', 1, 0),
+(29, '55555555555', '55555555555', 1, '55555555555', '5555555553', '55555555555', '55555555555', '55555555555', '55555555555', 1, 1),
+(30, 'vavavavvavavava', 'ooooooooooooooo', 2, '1000756163', '1000756163', '1000756163', '1000756163', '1000756163', '1000756163', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -416,7 +435,7 @@ CREATE TABLE `tbl_usuario` (
 --
 
 INSERT INTO `tbl_usuario` (`id_usuario`, `nombre`, `correo`, `password`, `imagen`, `url`, `codigo`) VALUES
-(1, 'Jhoan h', 'jhoanhenao820@gmail.com', 'c93ccd78b2076528346216b3b2f701e6', 'fondo.jpg', 'public/img/fondo.jpg', '0zhu1leyhu');
+(1, 'Jhoan h', 'jhoanhenao820@gmail.com', 'anFsUDhXelJ1R2FkakNFUWRqVnp3Zz09', 'fondo.jpg', 'public/img/fondo.jpg', '0zhu1leyhu');
 
 -- --------------------------------------------------------
 
@@ -640,7 +659,7 @@ ALTER TABLE `tbl_detalle_entrada`
 -- AUTO_INCREMENT de la tabla `tbl_detalle_pedido`
 --
 ALTER TABLE `tbl_detalle_pedido`
-  MODIFY `Pedido_has_Producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Pedido_has_Producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_detalle_salida`
@@ -658,13 +677,13 @@ ALTER TABLE `tbl_entrada`
 -- AUTO_INCREMENT de la tabla `tbl_pedido`
 --
 ALTER TABLE `tbl_pedido`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_persona`
 --
 ALTER TABLE `tbl_persona`
-  MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_pqo`
@@ -700,25 +719,25 @@ ALTER TABLE `tbl_tipo_persona`
 -- AUTO_INCREMENT de la tabla `tbl_tipo_salida`
 --
 ALTER TABLE `tbl_tipo_salida`
-  MODIFY `tipo_salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `tipo_salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tmp`
 --
 ALTER TABLE `tmp`
-  MODIFY `id_tmp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `id_tmp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
 -- AUTO_INCREMENT de la tabla `tmp_entrada`
 --
 ALTER TABLE `tmp_entrada`
-  MODIFY `id_tmp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_tmp` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `tmp_salida`
 --
 ALTER TABLE `tmp_salida`
-  MODIFY `id_tmp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_tmp` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas

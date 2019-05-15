@@ -3,7 +3,7 @@
     $varsesion=$_SESSION['usuario'];
     if ($varsesion== null || $varsesion=='') {
         echo 'Usted no tiene autorización';
-        die()};?>
+        die();};?>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,5 +16,5 @@
     <link rel="stylesheet" type="text/css" href="css/general-view.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="ajax/menu-view.css">
-    <link href="http://localhost:8080/fonts.googleapis.com/css?family=Josefin+Sans|Montez" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Josefin+Sans|Montez" rel="stylesheet">
 </head>

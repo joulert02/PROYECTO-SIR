@@ -220,7 +220,7 @@ if ($CantidadPersonas = (count($contarRegistros)==0)) {
                                        });  
                                  </script>';    
 		 ?>
-		 <!-- <meta http-equiv="refresh" content="0; url=http://localhost:8080/SIR/listEntry">  -->
+		 <!-- <meta http-equiv="refresh" content="0; url=http://localhost:8080/PROYECTO-SIR/SIR/listEntry">  -->
 <?php 
 	}
 } ?>

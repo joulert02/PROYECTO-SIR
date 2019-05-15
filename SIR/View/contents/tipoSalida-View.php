@@ -66,4 +66,4 @@ $(document).ready(function() {
       </article>
     </section>
   </main>
-<script src="http://localhost:8080/SIR/ajax/tipoSalida.js"></script>
+<script src="http://localhost:8080/PROYECTO-SIR/SIR/ajax/tipoSalida.js"></script>

@@ -1,5 +1,5 @@
 <?php
-    include_once 'http://localhost:8080/SIR/View/contents/database.php';
+    include_once 'http://localhost:8080/PROYECTO-SIR/SIR/View/contents/database.php';
 
 		$json=array();
 		$consulta="SELECT * FROM tbl_categoria_producto ORDER BY id_categoria ";

@@ -109,7 +109,7 @@ $(document).ready(function() {
             closeOnConfirm: true 
           }, 
           function(){ 
-              $.post('http://localhost:8080/SIR/Controller/categoryController.php', postData, function(response) {
+              $.post('http://localhost:8080/PROYECTO-SIR/SIR/Controller/categoryController.php', postData, function(response) {
                   console.log(response);
                   location.reload();
               });

@@ -17,7 +17,7 @@ console.log(edit);
           e.preventDefault();
         } else {
             if (edit==null || edit==false) {
-                $.post('http://localhost:8080/SIR/Controller/categoriaController.php', postData, function(response){
+                $.post('http://localhost:8080/PROYECTO-SIR/SIR/Controller/categoriaController.php', postData, function(response){
                     listar();
                     $('#categoria-form').trigger('reset');
                     console.log(response);
@@ -43,7 +43,7 @@ console.log(edit);
                     }
                 });
             }else if (edit==true) {
-                $.post('http://localhost:8080/SIR/Controller/categoriaController.php', postData, function(response){
+                $.post('http://localhost:8080/PROYECTO-SIR/SIR/Controller/categoriaController.php', postData, function(response){
                     listar();
                     $('#categoria-form').trigger('reset');
                     console.log(response);
@@ -80,7 +80,7 @@ console.log(edit);
                 
             }
         $.ajax({
-            url : 'http://localhost:8080/SIR/Controller/categoriaController.php',
+            url : 'http://localhost:8080/PROYECTO-SIR/SIR/Controller/categoriaController.php',
             type : 'GET',
             success : function(response){
                 console.log(response);
@@ -122,7 +122,7 @@ console.log(edit);
           closeOnConfirm: true 
         }, 
         function(){ 
-            $.post('http://localhost:8080/SIR/Controller/categoriaController.php', postData, function(response) {
+            $.post('http://localhost:8080/PROYECTO-SIR/SIR/Controller/categoriaController.php', postData, function(response) {
                 console.log(response);
                 listar();
             });
@@ -134,7 +134,7 @@ console.log(edit);
         let element = $(this)[0].parentElement.parentElement;
         let consul = $(element).attr('idCategoria');
 
-        $.post('http://localhost:8080/SIR/Controller/categoriaController.php', {consul}, function(response) {
+        $.post('http://localhost:8080/PROYECTO-SIR/SIR/Controller/categoriaController.php', {consul}, function(response) {
             let categor = JSON.parse(response);
             $('#categoria').val(categor[0].nombre);
             $('#estado').val(categor[0].estado);

@@ -55,7 +55,7 @@
         <tr>
 
             <td  style="width: 15%; color: #444444;">
-                <img style="width: 100%;" src="http://localhost:8080/SIR/public/img/Rodillos GBP.png" alt="Logo"><br>
+                <img style="width: 100%;" src="http://localhost:8080/PROYECTO-SIR/SIR/public/img/Rodillos GBP.png" alt="Logo"><br>
                 
             </td>
 			<td style="width: 75%;text-align:right;font-size:24px;color:#2c3e50">

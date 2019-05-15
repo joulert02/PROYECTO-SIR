@@ -50,4 +50,4 @@
       </article>
     </section>
   </main>
-<script src="http://localhost:8080/SIR/ajax/tipoDocumento.js"></script>
+<script src="http://localhost:8080/PROYECTO-SIR/SIR/ajax/tipoDocumento.js"></script>
