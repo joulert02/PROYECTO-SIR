@@ -125,7 +125,7 @@ $(document).ready(function() {
               const postData = {
                   id : id,
                }
-               $.post('http://localhost/SIR/Controller/exitController.php', postData, function(response) {
+               $.post('http://localhost:8080/PROYECTO-SIR/SIR/Controller/exitController.php', postData, function(response) {
                   // console.log(response);
                   let productos = JSON.parse(response);
                   let template = '';
