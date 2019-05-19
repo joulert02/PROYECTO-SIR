@@ -36,7 +36,7 @@ while ($row = $data->fetch()) {
     <nav class="contenedor-menu" id="contenedor-menu" style="z-index: 1000;">
         <a href="#" class="btn-menu">Menu <i class="icono icon-menu"></i></a>
         <ul class="menu" style="z-index: 1000;">
-            <!-- <li class="img-contenedor"><img src="<?php echo SERVERURL; ?>public/img/user-img.jpg" alt="error logo" class="logo-menu"><span>Bienvenido <<?php  echo "admin"; ?></span></li> -->
+            <!-- <li class="img-contenedor"><img src="<?php echo SERVERURL; ?>public/img/user-img.jpg" alt="error logo" class="logo-menu"><span>Bienvenido <span></li> -->
             
             
             <center>

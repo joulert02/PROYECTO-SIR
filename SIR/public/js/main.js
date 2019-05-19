@@ -65,7 +65,7 @@ $('.FormularioAjax').submit(function(e){
                 $(".RespuestaAjax").html(data);
                 respuesta.html(data);
                 console.log(data);
-                window.location.href="listPerson";
+                // window.location.href="listPerson";
             },
             error: function() {
                 $(".RespuestaAjax").html(data);

@@ -1,6 +1,6 @@
 <?php
-
-echo'<script type="text/javascript"> 
+session_start(['name' => 'SIR']);
+echo '<script type="text/javascript"> 
 swal({title: "LISTO",    
       text: "Sessión Cerrada Con Exito.", 
       type:"success", 
@@ -8,10 +8,7 @@ swal({title: "LISTO",
       closeOnConfirm: false 
     }, 
     function(){ 
-      window.location.href="'.SERVERURL.'login"; 
+      window.location.href="localhosst:8080/PROYECTO-SIR/SIR/login"; 
     });  
-</script>'; 
-session_unset(); 
+</script>';
 session_destroy();
-   ?>
-  

@@ -17,5 +17,5 @@ if (isset($_POST['documento'])) {
 } else {
     session_start();
     session_destroy();
-    echo '<script> window.location.href="'.SERVERURL.'login/'.'" </script>';
+    // echo '<script> window.location.href="'.SERVERURL.'login/'.'" </script>';
 }

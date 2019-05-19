@@ -60,12 +60,8 @@ $tipoDocumentoPersona = new tipoDocumentoPersonModel();
 							<input type="text" name="ciudad" class="form-control" required data-parsley-length="[3,20]">
 						</div>
 						<div class="col-md-4 mb-3">
-							<label>Ciudad</label><br>
-							<input type="text" name="ciudad" class="form-control" required data-parsley-length="[3,20]">
-						</div>
-						<div class="col-md-4 mb-3">
 							<label>Departamento</label><br>
-							<input type="text" name="departamento" class="form-control" required data-parsley-length="[3,20]"><br>
+							<input type="text" name="departamento" class="form-control" data-parsley-length="[3,20]"><br>
 						</div>
 					</div>
 					<div class="form-row">
