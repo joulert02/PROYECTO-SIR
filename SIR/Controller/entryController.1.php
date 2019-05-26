@@ -36,32 +36,27 @@ if ($peticionAjax==true) {
 	require_once "./Model/entryModel.php";
 }
 
-	class entryController 
+	class entryController1
 	{
 		public function listar()
 		{
 			$entradaModel = new entryModel();
 			return $entradaModel->listar();
 		}
-		public function listarReferencias($id)
+		public function listarReferencias()
 		{
 			$entradaModel = new entryModel();
-			return $entradaModel->listarReferencias($id);
+			return $entradaModel->listarReferencias(2);
 		}
 		public function insertar(entryModel $entrada)
 		{
 			$entradaModel = new entryModel();
 			return $entradaModel->insertar($entrada);
 		}
-		public function buscar()
+		public function buscar($id)
 		{
 			$entradaModel = new entryModel();
-			return $entradaModel->buscar();
-		}
-		public function insertTmp($id,$cantidad)
-		{
-			$entradaModel = new entryModel();
-			return $entradaModel->insertTmp($id,$cantidad);
+			return $entradaModel->buscar($id);
 		}
 		public function actualizar(entryModel $entrada)
 		{

@@ -26,7 +26,7 @@
                 <a href="<?php echo SERVERURL; ?>editAccount" title="Editar Cuenta">
                     <i class="glyphicon glyphicon-cog"></i>
                 </a> |
-                <a href="<?php echo SERVERURL; ?>logout" title="Cerrar Sesión">
+                <a href="<?php echo mainModel::encryption($_SESSION['token_sir']); ?>" title="Cerrar Sesión">
                     <i class="glyphicon glyphicon-off"></i>
                 </a>
             </center>

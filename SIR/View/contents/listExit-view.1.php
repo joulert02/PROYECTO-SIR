@@ -5,7 +5,6 @@
 
 	require_once "Controller/exitController.php";
 	$control = new exitController();
-  $control2 = new exitController();
 ?>
 <script>
 
@@ -56,31 +55,20 @@ $(document).ready(function() {
 			<td scope="col">Cantidad</td> -->
 			<td scope="col">Fecha Salida</td>
 			<td scope="col">Tipo Salida</td>
-      <td scope="col">Referencias</td>
 			<td scope="col">Acciones</td>
 		</tr>
 		</thead>
 		<tbody>
-      
 			<?php foreach ($control->listar() as $fila):?>
-        <tr iddetalle="<?php echo $fila->__GET('Salida_id_salida'); ?>">
+        <tr iddetalle="<?php echo $fila->Salida_id_salida; ?>">
 				  <!-- <td style="display: none" scope="row"><?php echo $fila->Salida_id_salida; ?></td> -->
 				  <!-- <td><?php //echo $fila->nombre_producto; ?></td> -->
 				  <!-- <td><?php //echo $fila->referencia; ?></td> -->
 				  <!-- <td><?php //echo $fila->cantidad; ?></td> -->
 				  <td><?php echo $fila->fecha_salida; ?></td>
 				  <td><?php echo $fila->tipo_salida_tipo_salida; ?></td>
-          <td>
-             <?php foreach ($control2->listarReferencias($fila->__GET('Salida_id_salida')) as $filas):
-        ?>
-            <?php echo $filas->referencia.",  "; ?>
-              <?php endforeach; ?>
-            </td>
 				  <td>
-
-          <a href="editExit/<?php echo mainModel::encryption($fila->Salida_id_salida); ?>" title="Editar Salida" data-toggle="tooltip" data-placement="top" class='btn btn-primary pull-center' > <i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
-
-
+            <a href="edit-exit.php?id=<?php echo $fila->Salida_id_salida; ?>" title="Editar" class='btn btn-primary' ><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
             <a href="#" class="btn btn-primary mostrarDetalle" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-eye" aria-hidden="true"></i></a> 
 		      </td>
         </tr>

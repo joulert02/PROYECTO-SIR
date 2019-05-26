@@ -1,192 +1,279 @@
 <?php
-	require_once "Controller/entryController.php";
-	$control = new entryController();
-	$entrada = new  entryModel();
-	$productoController = new productoController();	
-	$categoriaController = new  CategoriaController();
-	if ($_SESSION['id'.$contador]!=null) {
-		$detalleEntrada=$entrada->buscar($_GET['id']);
-	}
+
+require_once "Controller/entryController.php";
+
+require_once 'Controller/productController.php';
+$produtoC = new  productoController();
+
+$control = new entryController();
+$entrada = new  entryModel();
+$productoController = new productoController();
+$categoriaController = new  CategoriaController();
+$detalleEntrada = $control->buscar();
+// var_dump($detalleEntrada);
+$fecha = 0;
+foreach ($detalleEntrada as $value) {
+	$control->insertTmp($value->__GET('Producto_id_producto'),$value->__GET('cantidad'));
+	$fecha = date($value->__GET('fecha_entrada'));
+}
+//echo $fecha;
 ?>
-<style type="text/css">
-  .container{  
-    width:900px;
-    height: 415px;
-  }
-</style>
 
-   <div class="container">
-		<div class="col-md-16">
-      <div class="panel panel-default">
-          <div class="panel-heading clearfix">&nbsp&nbsp
-             <span class="glyphicon glyphicon-edit fa-fax3 fa-lg"></span>
-             <label ><h4><b>Editar Entrada <?php ?></b></h4></label>
-          </div>
-      <div class="panel-body"> 
 
-	<form action="" id="validate_form" method="POST">
-		<div class="form-row">
-			<div class="col-md-4 mb-3">
-				<label>ID Entrada</label><br>
-				<input type="number" name="id_entrada" id=""disabled class="form-control" value="<?php echo $detalleEntrada->__GET('Entrada_id_entrada') ?>">
-			</div>
-			<!-- <div class="col-md-4 mb-3">
-				<label>Fecha Entrada</label>
-				<input type="date" name="fecha_entrada" value="<?php echo date('Y-m-d', strtotime($detalleEntrada->__GET('fecha_entrada'))) ?>"required class="form-control"><br><br>
-
-			</div><br><br> -->
-			<div class="col-md-4 mb-3">
-				<label>Editar Producto</label><br>
-				<input type="number" name="buscador" placeholder="Buscar Producto" required class="form-control">
-			</div>
-		</div>
-				<input type="submit" name="Buscar" class="btn btn-primary" value="Consultar Producto" >
-	</form>
-	<br>
-	<?php
-	// error_reporting(0);
-
-	if (isset($_POST['Buscar'])) {
-			$result= $productoController->buscar($_POST['buscador']);
-			$_SESSION['id_productos']=$result->id_producto;
-			$_SESSION['mismo']=1;
-	}else {
-			$result= $productoController->buscar($detalleEntrada->__GET('Producto_id_producto'));
-			$_SESSION['id_producto']=$result->id_producto;
-			$_SESSION['mismo']=0;	
-	}
-	if ($result->id_producto==null || $result->estado==0) {
-		echo '<h1>Producto no registrado o Inactivo</h1>';
-	}
-	?>
-	<section id="busqueda">
-		  <h4>Resultado de busqueda</h4>
-		    <br>
-		    	<table  class="table table-bordered">
-		     	<thead>
-		     	 		<th>Referencia</th>
-        			<th>Nombre</th>
-        			<th>precio</th>
-        			<th>IVA</th>
-        			<th>Categoria</th>
-        			<th>Cantidad</th>
-       				<th>Estado</th>
-		     	</thead>
-		     	<tbody>
-						<tr>
-							<td><?php echo $result->referencia;?></td>
-							<td><?php echo $result->nombre_producto; ?></td>
-							<td><?php echo $result->precio_unitario; ?></td>
-							<td><?php echo $result->IVA_Producto; ?></td>
-							<td><?php $a=$categoriaController->buscar($result->Categoria_Producto_id_Categoria); echo $a->categoria;?></td>
-							<td><?php echo $result->cantidad;?></td>
-							<td><?php 
-							if ($result->estado==1) {
-								echo "Activo";
-								}
-								$_SESSION['cantidadp']=$result->cantidad;
-							 ?></td>
-							</tr>
-		     	 	</tbody>
-		     	 </table><br>	
-				<div class="col-md-8 mb-3">
-				<a href="list-entry.php"><input type="button" value="Cancelar" class="btn btn-danger btn-lg" style="float: right;"></a>				
-				<section style="text-align: center;"><input type="submit" name="generar" class="btn btn-primary btn-lg" id="generar" value="Actualizar salida" onclick="myFunction()"></section>
-			</div>
-		</section>
-	</center>
-<br><hr>
-<div class="row">
-    <div class="col-md-12">
-	<form action="" method="post">
-	
-       <section id="salida" style="margin-left: 100px; margin-right: 100px; display:none">
-       <label>Ingresar la canidad:</label>
-       <input type="number" name="cantidad" class="form-control" required placeholder="cantidad de Productos" value="<?php echo $detalleEntrada->cantidad ?>">
-     <section style="text-align: center; margin-top: 40px;">
-
-		 <div class="col-md-6 mb-3">
-				<label>Fecha Entrada</label>
-				<input type="date" name="fecha_entrada" value="<?php echo date('Y-m-d', strtotime($detalleEntrada->__GET('fecha_entrada'))) ?>"required class="form-control"><br><br>
-
-			</div><br><br>
-    <input type="submit" class="btn btn-primary btn-lg" style="margin: 0 10px;" name="registrar" value="Finalizar salida">
-		<a href=""  class="btn btn-danger btn-lg" onclick="alert('Cancelar salida');myFunction();return false;">Cancelar</a>
-</section>
-<!-- href="salidas.php" -->
-<br>
-</section> 
-</form>
-</div>
-</div>
-</div>
-</div>
-
-	<script>  
-	$(document).ready(function(){
-    $("#buscar").click(function(){
-        $("#busqueda").toggle();
-    });
-});
-$(document).ready(function(){  
-    $('#validate_form').parsley();
-});  
-
-function myFunction() {
-    var x = document.getElementById("salida");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-};
+<script>
+	$(document).ready(function() {
+		$('#grid').DataTable({
+			"language": {
+				"url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+			}
+		});
+	});
 </script>
 
-	<?php
-		if (isset($_POST["registrar"])) {
-			if ($_SESSION['mismo']==0) {
-				$entrada->__SET('Producto_id_producto', $_SESSION['id_producto']);
-			}else {
-				$entrada->__SET('Producto_id_producto', $_SESSION['id_productos']);
+<script>
+	$(document).ready(function() {
+		$('#tabla').DataTable({
+			"language": {
+				"url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
 			}
-			 $entrada->__SET('fecha_entrada',  $_POST['fecha_entrada']);
-			 echo $entrada->__GET('fecha_entrada');
-			 echo $entrada->__GET('fecha_entrada');
+		});
+	});
+</script>
 
-			$entrada->__SET('entrada_has_prducto', $detalleEntrada->__GET('entrada_has_prducto'));
-			$entrada->__SET('cantidad', $_POST["cantidad"]);
-			$entrada->__SET('cantidadP', $_SESSION['cantidadp']);
-		if (($entrada->fecha_entrada == "")&&($entrada->cantidad == "")&&($entrada->Producto_id_producto == ""))  
-		{
-			 echo'<script type="text/javascript"> 
+<script>
+	$(document).ready(function() {
+		$('#tabla2').DataTable({
+			"language": {
+				"url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+			}
+		});
+	});
+</script>
+
+
+<script type="text/javascript" src="<?php echo SERVERURL; ?>public/lib/alertify.js"></script>
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>public/themes/alertify.core.css" />
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>public/themes/alertify.default.css" />
+
+
+<br>
+<div class="container-fluid">
+	<div class="col-md-10 col-xs-12 col-md-offset-1 mt-1">
+		<div class="panel panel-default">
+			<div class="panel-heading clearfix">&nbsp&nbsp
+				<span class="glyphicon glyphicon-edit fa-fax3 fa-lg"></span>
+				<label>
+					<h4><b>Editar Entrada</b></h4>
+				</label>
+			</div>
+			<div class="panel-body">
+				<form id="validate_form" method="POST">
+					<div class="form-row">
+
+						<div class="col-md-6">
+							<label>Fecha Entrada</label><br>
+							<input type="date" name="fecha_entrada" value="<?php echo date('Y-m-d', strtotime($fecha)); ?>" required class="form-control">
+
+						</div>
+
+						<div class="col-md-6">
+							<label>Añadir Productos</label><br>
+							<button style="width: 100%;" type="button" id="cargarP" class="btn btn-info" data-toggle="modal" data-target="#exampleModalScrollable">
+								<span class="glyphicon glyphicon-plus"></span> Agregar productos
+							</button><br>
+						</div>
+
+
+
+						<div class="col-md-10 col-xs-12 col-md-offset-1 mt-1" style="margin-top: 5%">
+							<center>
+								<h4>Productos registrados en la entrada</h4>
+							</center>
+							<div class="table-responsive">
+								<table id=".grid" class="table table-striped table-bordered nowrap" style="width:100%">
+									<thead style="background-color: #F3F2F2;color: black; font-weight: bold;">
+										<tr>
+
+											<td scope="col">Referencia</td>
+											<td scope="col">Nombre Producto</td>
+											<td scope="col" width="15%">Cantidad</td>
+											<td scope="col">Acciones</td>
+										</tr>
+									</thead>
+									<tbody id="insumo">
+
+									</tbody>
+								</table>
+							</div>
+
+
+
+
+							<!-- <div class="table-responsive" style="margin-top: 5%">
+								<center>
+									<h4>Productos Añadidos a la entrada</h4>
+								</center>
+								<table class="table table-striped table-bordered nowrap" style="width:100%">
+									<thead style="background-color: #F3F2F2;color: black; font-weight: bold;">
+										<tr>
+											<th width="2%">Referencia</th>
+											<th width="10%">Nombre</th>
+											<th width="1%">Cantidad</th>
+											<th width="1%">Eliminar</th>
+										</tr>
+									</thead>
+									<tbody id="">
+
+									</tbody>
+								</table>
+							</div> -->
+
+
+						</div>
+						<!-- Modal -->
+						<div class="modal fade bs-example-modal-lg" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle">
+							<div class="modal-dialog modal-lg" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+
+
+										<center>
+											<h2 class="modal-title" id="exampleModalScrollableTitle">Productos</h2>
+										</center>
+									</div>
+
+									<div class="modal-body">
+										<div class="container-fluid">
+											<div class="table-responsive">
+												<table id="tabla" class="table table-striped table-bordered nowrap" style="width:100%">
+													<thead style="background-color: #F3F2F2;color: black; font-weight: bold;">
+														<tr>
+															<!--<td width="5%">Id Producto</td>-->
+															<td width="5%">Referencia</td>
+															<td width="10%">Nombre Producto</td>
+															<td width="5%">Cantidad</td>
+															<td width="1%">Agregar</td>
+
+														</tr>
+													</thead>
+
+													<tbody id="product">
+														<?php foreach ($produtoC->listar() as $r) : ?>
+															<tr Producto_id_producto="<?php echo $r->__GET('id_producto'); ?>" valor="<?php echo $r->__GET('cantidad'); ?>" tipo="2">
+																<!-- <td> <?php echo $r->__GET('id_producto'); ?> </td> -->
+																<td> <?php echo $r->__GET('referencia'); ?> </td>
+																<td> <?php echo $r->__GET('nombre_producto'); ?> </td>
+
+
+																<td>
+																	<input type="number" style="width:60%;" class="form-control" id="cantidad_<?php echo $r->__GET('id_producto'); ?>" value="1">
+																</td>
+																<td>
+																	<button class="btn btn-primary text-center" id="insertarP"><i class="glyphicon glyphicon-plus"></i></button>
+																</td>
+
+
+															</tr>
+														<?php endforeach; ?>
+													</tbody>
+
+												</table>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Fin Modal -->
+
+
+
+						<div class="col-md-12 mb-3">
+							<input type="submit" value="Actualizar" name="registrar" class="btn btn-info">
+							<a href="<?php echo SERVERURL; ?>listEntry"><input type="button" value="Cancelar" class="btn btn-danger" style="float: right;"></a>
+						</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<script>
+	$(document).ready(function() {
+		$('#validate_form').parsley();
+	});
+</script>
+
+
+<script src="http://localhost:8080/PROYECTO-SIR/SIR/ajax/Entrada.js"></script>
+
+<script>
+	jQuery(document).ready(function($) {
+		$('.delete').on('click', function() {
+			var getLink = $(this).attr('href');
+			swal({
+				title: 'Estás seguro de eliminar este registro de la entrada?',
+				text: "Será eliminado permanentemente!",
+				type: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Si, eliminar!',
+				closeOnConfirm: false
+			}, function() {
+				swal("¡Eliminado!",
+					"Eliminado Correctamente.",
+					"success", );
+				window.location.href = getLink
+			});
+			return false;
+		});
+	});
+</script>
+
+
+
+<?php
+if (isset($_POST["registrar"])) {
+
+	$entrada->__SET('fecha_entrada',  $_POST['fecha_entrada']);
+
+	//$entrada->__SET('cantidadP', $_SESSION['cantidadp']);
+	if (($entrada->fecha_entrada == "")) {
+		echo '<script type="text/javascript"> 
                                   swal({title: "ERROR",    
                                         text: "No se púdo actualizar la Entrada Revise los campos.", 
                                         type:"error", 
                                         confirmButtonText: "OK", 
-                                        closeOnConfirm: false 
+                                        closeOnConfirm: true 
                                       }, 
                                       function(){ 
-                                        window.location.href="'.SERVERURL.'addEntry"; 
+                                        window.location.href="' . SERVERURL . 'editEntry"; 
                                       });  
                                 </script>';
-                                return false;    
-		}
-			else if ($control->actualizar($entrada)) {
-                  echo'<script type="text/javascript"> 
+		return false;
+	} else if ($control->actualizar($entrada)) {
+		echo '<script type="text/javascript"> 
                             swal({title: "LISTO",    
                                   text: "La Entrada ha sido actualizada correctamente.", 
                                   type:"success", 
                                   confirmButtonText: "OK", 
-                                  closeOnConfirm: false 
+                                  closeOnConfirm: true 
                                 }, 
                                 function(){ 
-                                  window.location.href="'.SERVERURL.'listEntry"; 
                                 });  
-                          </script>'; 
-													}
-													else{ 
+                          </script>';
+	} else {
 
-                          echo'<script type="text/javascript"> 
+		echo '<script type="text/javascript"> 
                                   swal({title: "ERROR",    
                                         text: "No se púdo actualizar la Entrada. Intenta más tarde.", 
                                         type:"error", 
@@ -194,13 +281,9 @@ function myFunction() {
                                         closeOnConfirm: false 
                                       }, 
                                       function(){ 
-                                        window.location.href="'.SERVERURL.'listEntry"; 
                                       });  
-                                </script>';    
+                                </script>';
 		?>
-		<meta http-equiv="refresh" content="0; url=http://localhost:8080/PROYECTO-SIR/SIR/listEntry">
-<?php 
-	}
+	<?php
+}
 } ?>
-
- </div>

@@ -19,7 +19,7 @@
           </a>
         </li>
         <li class="last">
-          <a href="<?php echo SERVERURL; ?>logout">
+          <a href="<?php echo mainModel::encryption($_SESSION['token_sir']); ?>">
             <i class="glyphicon glyphicon-off"></i>
             Salir
           </a>

@@ -12,7 +12,7 @@ $(document).ready(function(){
                 cantidad : $('#cantidad_'+ $(element).attr('Producto_id_producto')).val(),
             }
             // console.log(postData);
-            $.post('http://localhost/SIR/Controller/exitAjax.php', postData, function(response){
+            $.post('http://localhost:8080/PROYECTO-SIR/SIR/Controller/exitAjax.php', postData, function(response){
                     // listar();
                     // console.log(response);
                     if (response==1) {
@@ -49,7 +49,7 @@ $(document).ready(function(){
             Producto_id_producto : $(element).attr('Producto_id_producto'),
         }
         // console.log(postData);
-            $.post('http://localhost/SIR/Controller/exitAjax.php', postData, function(response){
+            $.post('http://localhost:8080/PROYECTO-SIR/SIR/Controller/exitAjax.php', postData, function(response){
                     listar();
                     $('#categoria-form').trigger('reset');
                     // console.log(response);
@@ -73,7 +73,7 @@ $(document).ready(function(){
 
     function listar2(){
         $.ajax({
-            url : 'http://localhost/SIR/Controller/exitAjax.php',
+            url : 'http://localhost:8080/PROYECTO-SIR/SIR/Controller/exitAjax.php',
             type : 'GET',
             success : function(response){
                 // console.log(response);
@@ -102,7 +102,7 @@ $(document).ready(function(){
     function listar(){
         let listar="listar";
         let total=0;
-            $.post('http://localhost/SIR/Controller/exitAjax.php', listar, function(response){
+            $.post('http://localhost:8080/PROYECTO-SIR/SIR/Controller/exitAjax.php', listar, function(response){
                 // $('#categoria-form').trigger('reset');
                 // console.log(response);
                 if (response) {
@@ -152,7 +152,7 @@ $(document).ready(function(){
           closeOnConfirm: true 
         }, 
         function(){ 
-            $.post('http://localhost/SIR/Controller/exitAjax.php', postData, function(response) {
+            $.post('http://localhost:8080/PROYECTO-SIR/SIR/Controller/exitAjax.php', postData, function(response) {
                 // console.log(response);
                 listar();
             });
@@ -164,7 +164,7 @@ $(document).ready(function(){
         let element = $(this)[0].parentElement.parentElement;
         let consul = $(element).attr('idCategoria');
 
-        $.post('http://localhost/SIR/Controller/exitAjax.php', {consul}, function(response) {
+        $.post('http://localhost:8080/PROYECTO-SIR/SIR/Controller/exitAjax.php', {consul}, function(response) {
             let categor = JSON.parse(response);
             $('#categoria').val(categor[0].nombre_producto);
             $('#referencia').val(categor[0].referencia);

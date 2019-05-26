@@ -8,6 +8,7 @@ $(document).ready(function(){
             let element = $(this)[0].parentElement.parentElement;
             const postData = {
                 Producto_id_producto : $(element).attr('Producto_id_producto'),
+                valor : $(element).attr('valor'),
                 cantidad : $('#cantidad_'+ $(element).attr('Producto_id_producto')).val(),
             }
             // console.log(postData);
@@ -80,7 +81,7 @@ $(document).ready(function(){
                 let template = '';
                 productos.forEach(productos => {
                     template += `
-                        <tr Producto_id_producto="${productos.Producto_id_producto}" valor="${productos.cantidad}">
+                        <tr Producto_id_producto="${productos.Producto_id_producto}" valor="${productos.precio_unitario}">
                         <td style="display: none"></td>
                         <td>${productos.referencia}</td>
                         <td>${productos.nombre_producto}</td>
@@ -110,7 +111,7 @@ $(document).ready(function(){
                   let productos = JSON.parse(response);
                   let template = '';
                   productos.forEach(productos => {
-                      total+=parseInt(productos);
+                      total+=parseInt(productos.precio_unitario*productos.cantidad);
                       template += `
                           <tr Producto_id_producto="${productos.idTmp}">
                           <td>${productos.referencia}</td>
@@ -124,7 +125,7 @@ $(document).ready(function(){
                           </tr>
                       `;
                   });
-                  $('#dir').val(total);
+                  $('#totall').html(total);
                   $('#insumo').html(template);
                 } else {
                     console.log(response);

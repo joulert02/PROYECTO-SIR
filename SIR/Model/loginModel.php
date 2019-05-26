@@ -23,4 +23,16 @@ class loginModel extends mainModel
         $sql->execute();
         return $sql;
     }
+
+    public function cierre_sesion_modelo($datos)
+    {
+        if ($datos['usuario'] != "" && $datos['Token_S']==$datos['Token']) {
+            session_unset();
+            session_destroy();
+            $respuesta = "true";
+        } else {
+            $respuesta = "false";
+        }
+        return $respuesta;        
+    }
 }

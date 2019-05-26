@@ -7,9 +7,9 @@
     <link rel="stylesheet" type="text/css" href="<?php echo SERVERURL; ?>public/css/home-view.css">
     <link rel="stylesheet" type="text/css" href="<?php echo SERVERURL; ?>public/css/general-view.css">
     <!-- LIBRERIAS -->
-     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css"> 
+     <!-- <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">  -->
     <link href="<?php echo SERVERURL; ?>public/css/parsley.css" rel="stylesheet" type="text/css"> 
-    <link href="<?php echo SERVERURL; ?>public/css/datatables/datatables.min.css" rel="stylesheet" type="text/css">
+    <!-- <link href="<?php echo SERVERURL; ?>public/css/datatables/datatables.min.css" rel="stylesheet" type="text/css"> -->
     <link href="<?php echo SERVERURL; ?>public/css/sweetalert.css" rel="stylesheet" type="text/css">
     
     <!-- Latest compiled and minified CSS -->
@@ -18,8 +18,8 @@
     <!-- FUENTES -->
     
     <!-- <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Montez" rel="stylesheet"> -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"> -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
     <link href='<?php echo SERVERURL; ?>public/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 <!-- JHOAN CSS -->
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+<!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" /> -->

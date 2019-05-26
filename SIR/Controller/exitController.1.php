@@ -46,20 +46,15 @@ if ($peticionAjax==true) {
 			$salidaModel = new exitModel();
 			return $salidaModel->listar();
 		}
-		public function listarReferencias($id)
-		{
-			$salidaModel = new exitModel();
-			return $salidaModel->listarReferencias($id);
-		}
 		public function insertar(exitModel $salida)
 		{
 			$salidaModel = new exitModel();
 			return $salidaModel->insertar($salida);
 		}
-		public function buscar()
+		public function buscar($id)
 		{
 			$salidaModel = new exitModel();
-			return $salidaModel->buscar();
+			return $salidaModel->buscar($id);
 		}
 		public function actualizar(exitModel $salida)
 		{

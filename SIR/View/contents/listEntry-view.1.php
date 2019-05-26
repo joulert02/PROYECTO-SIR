@@ -3,9 +3,9 @@
 	// $cnx = new conexion();
 	// $cnx->conectar();
 
-	require_once "Controller/exitController.php";
-	$control = new exitController();
-  $control2 = new exitController();
+	require_once "Controller/entryController.php";
+  $control = new entryController();
+  $control2 = new entryController();
 ?>
 <script>
 
@@ -18,14 +18,12 @@ $(document).ready(function() {
   });
 });
 </script>
-
 <style type="text/css">
-
-.container 
-{  
-  width:950px;
-  height: 400px;
-  position: relative;
+  .container 
+ {  
+ width:950px;
+ height: 400px;
+ position: relative;
 }
 
 #modal_size{
@@ -34,63 +32,60 @@ $(document).ready(function() {
 </style>
 
     <center>
-
-    <h1>Salidas</h1>
+    <h1>Entradas</h1>
       </center>
 
          <div class="container-fluid" style="width: 90%;">
-          <hr>
-          <a href="<?php echo SERVERURL; ?>addExit" class="btn btn-primary" role="button">Registrar Salida &nbsp&nbsp<i class="fa fa-plus-circle"></i></a>
-         
+           <hr>
+          <br><a href="<?php echo SERVERURL; ?>addEntry" class="btn btn-primary" role="button">Registrar Entrada &nbsp&nbsp<i class="fa fa-plus-circle"></i></a>
+          </a>
 
-          <a href="View/contents/reportExit-view.php" class="btn btn-primary" target="_blank" style="float: right;" role="button">Reporte &nbsp&nbsp<i class="fa fa-file"></i></a>
-          <br><br>
+           <a href="View/contents/reportEntry-view.php" class="btn btn-primary" target="_blank" style="float: right;" role="button">Reporte &nbsp&nbsp<i class="fa fa-file"></i></a>
+           <br><br>
 
        <div class="box-body table-responsive">
         <table id="grid" class="table table-striped table-bordered nowrap" style="width:100%">
             <thead style="background-color: #F3F2F2;color: black; font-weight: bold;">
           <tr>
-			<!-- <td scope="col" style="display: none">ID Salida</td>
-			<td scope="col">Nombre Producto</td>
-			<td scope="col">Referencia</td>
-			<td scope="col">Cantidad</td> -->
-			<td scope="col">Fecha Salida</td>
-			<td scope="col">Tipo Salida</td>
+			<td scope="col" style="display: none">ID Entrada</td>
+			<!-- <td scope="col">Nombre Producto</td> -->
+			<!-- <td scope="col">Referencia</td> -->
+			<!-- <td scope="col">Cantidad</td> -->
+      <td scope="col">Fecha Entrada</td>
       <td scope="col">Referencias</td>
 			<td scope="col">Acciones</td>
 		</tr>
 		</thead>
 		<tbody>
-      
-			<?php foreach ($control->listar() as $fila):?>
-        <tr iddetalle="<?php echo $fila->__GET('Salida_id_salida'); ?>">
-				  <!-- <td style="display: none" scope="row"><?php echo $fila->Salida_id_salida; ?></td> -->
-				  <!-- <td><?php //echo $fila->nombre_producto; ?></td> -->
-				  <!-- <td><?php //echo $fila->referencia; ?></td> -->
-				  <!-- <td><?php //echo $fila->cantidad; ?></td> -->
-				  <td><?php echo $fila->fecha_salida; ?></td>
-				  <td><?php echo $fila->tipo_salida_tipo_salida; ?></td>
+			<?php $contador=1; foreach ($control->listar() as $fila):
+        ?>
+        <tr idDetalle="<?php echo $fila->Entrada_id_entrada; ?>">
+          <td scope="row" style="display: none"><?php echo $fila->Entrada_id_entrada; ?></td>
+          <!-- <td><?php //echo $fila->nombre_producto; ?></td> -->
+          <!-- <td><?php //echo $fila->referencia; ?></td> -->
+          <!-- <td><?php //echo $fila->cantidad; ?></td> -->
+          <td><?php echo $fila->fecha_entrada; ?></td>
           <td>
-             <?php foreach ($control2->listarReferencias($fila->__GET('Salida_id_salida')) as $filas):
+             <?php foreach ($control2->listarReferencias() as $filas):
         ?>
             <?php echo $filas->referencia.",  "; ?>
               <?php endforeach; ?>
             </td>
-				  <td>
-
-          <a href="editExit/<?php echo mainModel::encryption($fila->Salida_id_salida); ?>" title="Editar Salida" data-toggle="tooltip" data-placement="top" class='btn btn-primary pull-center' > <i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
-
-
+             
+          <td>
+          <a href="<?php echo SERVERURL; ?>editEntry?id=<?php echo $fila->Entrada_id_entrada; ?>" title="Editar" class='btn btn-primary' ><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
+            <?php $_SESSION['id'.$contador]=$fila->Entrada_id_entrada;
+            $contador++;
+            ?>
             <a href="#" class="btn btn-primary mostrarDetalle" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-eye" aria-hidden="true"></i></a> 
-		      </td>
-        </tr>
+          </td>
+      </tr>
       <?php endforeach; ?> 
         </tbody>
-
     </table>
-</div>
+  </div>
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+ <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -98,7 +93,7 @@ $(document).ready(function() {
           <span aria-hidden="true">&times;</span>
         </button>
         <center>
-        <h4 class="modal-title" id="myModalLabel">Informacion De La Salida</h4>
+        <h4 class="modal-title" id="myModalLabel">Informacion De Pedido</h4>
       </center>
       </div>
       <div class="modal-body">
@@ -110,7 +105,6 @@ $(document).ready(function() {
 			      <td scope="col">Nombre Producto</td>
 			      <td scope="col">Referencia</td>
 			      <td scope="col">Cantidad</td>
-			      <td scope="col">Fecha Salida</td>
 			      <!-- <td scope="col">Acciones</td> -->
 		        </tr>
 		    </thead>
@@ -126,19 +120,18 @@ $(document).ready(function() {
       </div>
     </div>
   </div>
-</div>
 
 <script>
-        jQuery(document).ready(function($){
+       jQuery(document).ready(function($){
             $('.mostrarDetalle').on('click',function(){
               let element = $(this)[0].parentElement.parentElement;
               let id = $(element).attr('iddetalle');
-              // console.log(id);
               const postData = {
                   id : id,
                }
-               $.post('http://localhost:8080/PROYECTO-SIR/SIR/Controller/exitController.php', postData, function(response) {
-                  // console.log(response);
+               console.log(postData);
+               $.post('http://localhost:8080/PROYECTO-SIR/SIR/Controller/entryController.php', postData, function(response) {
+                  console.log(response);
                   let productos = JSON.parse(response);
                   let template = '';
                   productos.forEach(productos => {
@@ -147,7 +140,7 @@ $(document).ready(function() {
                           <td>${productos.nombre_producto}</td>
                           <td>${productos.referencia}</td>
                           <td>${productos.cantidad}</td>
-                          <td>${productos.fecha_salida}</td>
+                          <td>${productos.fecha_entrada}</td>
                           </tr>
                       `;
                   });

@@ -87,17 +87,24 @@ class loginController extends loginModel
 
     public function cierre_sesion_controlador()
     {
-        session_destroy();
-        echo '<script type="text/javascript"> 
-                swal({title: "Sesion Cerrada",    
-                    text: "Sessión Cerrada Con Exito.", 
-                    type:"success", 
-                    confirmButtonText: "OK", 
-                    closeOnConfirm: true 
-                    }, 
-                    function(){ 
-                    window.location.href="' . SERVERURL . 'login/"; 
-                    });  
-                </script>';
+        session_start(['name' => 'SIR']);
+        $token = mainModel::decryption($_GET['Token']);
+        $datos=[
+            "usuario" => $_SESSION['usuario_sir'],
+            "Token_S" => $_SESSION['token_sir'],
+            "Token" => $token,
+        ];
+        return loginModelo::cierre_sesion_modelo($datos);
+        // echo '<script type="text/javascript"> 
+        //         swal({title: "Sesion Cerrada",    
+        //             text: "Sessión Cerrada Con Exito.", 
+        //             type:"success", 
+        //             confirmButtonText: "OK", 
+        //             closeOnConfirm: true 
+        //             }, 
+        //             function(){ 
+        //             window.location.href="' . SERVERURL . 'login/"; 
+        //             });  
+        //         </script>';
     }
 }
