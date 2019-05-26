@@ -1,6 +1,7 @@
-<link rel="stylesheet" type="text/css" href="<?php echo SERVERURL; ?>public/css/bootstrap.min.css">
-<link rel="stylesheet" href="<?php echo SERVERURL; ?>public/iconmoon/style.css">
-<link href="<?php echo SERVERURL; ?>public/css/sweetalert.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" href="public/iconmoon/style.css">
+<link href="public/css/sweetalert.css" rel="stylesheet" type="text/css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 <?php
   require_once "Controller/sugerenciaController.php";
@@ -8,46 +9,121 @@
   $control = new comentarioController();
 
 ?> 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Rodillos GBP | Inicio</title>
-   
+    <title>Rodillos Mastder | Inicio</title>
+    <link rel="stylesheet" href="public/homepage/iconmoon/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Montez" rel="stylesheet">
 
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="icon" href="public/img/rodillos.jpg">
+    <link rel="icon" href="public/homepage/images/cooker_1_.ico">
 
     <!-- Cargando fuentes -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,700italic' rel='stylesheet' type='text/css'>
-    
+
     <!-- Cargando iconos -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='public/homepage/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+    <!-- Carga de Galeria de imágenes -->
+    <link rel="stylesheet" href="public/homepage/css/owl.carousel.min.css">
 
     <!-- Carga de archivos css -->
     <link rel="stylesheet" href="public/homepage/css/bootstrap.css">
     <link rel="stylesheet" href="public/homepage/css/animate.min.css">
     <link rel="stylesheet" href="public/homepage/css/estilos.css">
-    
+
+<!-- parsley -->
+
+        <link rel="stylesheet" href="public/css/parsley.css">
+      
+   
+
+
+<style type="text/css">
+
+
+  .particulas-fondo {
+    background: url(public/img/3.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+   .contenedor {
+    background: rgba(0,0,0,.2);
+    position: absolute;
+    width: 100%;
+    height: 100%;    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+header{
+    position: absolute;
+    top: 0;
+    color: #fff;
+    background: rgba(255,255,255,.3);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+}
+
+
+
+.login {
+    background: rgba(0, 0, 0, .5);
+    color: white;
+    width: 30%;
+    height: 50%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    }
+    </style>
 
 
 </head>
 
 <body>
+
     <section class="bienvenidos">
-          <header class="encabezado navbar-fixed-top" role="banner" id="encabezado">
+
+       <header class="encabezado navbar-fixed-top" role="banner" id="encabezado">
             <div class="container">
-                 <a>
+                  <a>
                     <img src="public/img/Rodillos GBP2.PNG " style="width: 150px; height: 70px">
                 </a>
 
+                
+                <button  type="button" class="boton-menu hidden-md-up" data-toggle="collapse" data-target="#menu-principal" aria-expanded="false">
+                    <i class="fa fa-bars" aria-hidden="true"></i></button>
+
+                
+
                 <nav id="menu-principal" class="collapse">
                     <ul>
-                        <li class="active"><a href="<?php echo SERVERURL?>Inicio">Inicio</a></li>
-                        <li><a href="<?php echo SERVERURL?>login">Inicio de Sesión</a></li>
+                        <li class="active"><a href="<?php echo SERVERURL ?>Inicio">Inicio</a></li>
+                        <li><a data-scroll href="#conocenos">Conocenos</a></li>
+                        <li><a data-scroll href="#contacto">Contactenos</a></li>
+                        <li><a data-scroll href="#agencia">Galería</a></li>
+                        <li><a href="<?php echo SERVERURL ?>login">Inicio de Sesión</a></li>
 
                     </ul>
                 </nav>
@@ -55,49 +131,34 @@
             </div>
         </header>
 
-       <article id="particles-js" class="particulas-fondo"></article>
+    <article id="particles-js" class="particulas-fondo"></article>
     <section class="contenedor" id="contenedor">
-        <div class="texto-encabezado text-xs-center">
+        
+            <div class="texto-encabezado text-xs-center">
 
             <div class="container">
-                <br><br><br><br><br>
                 <h1 class="display-4 wow bounceIn">Bienvenidos a rodillos GBP</h1>
-                <br>
                 <p class="wow bounceIn" data-wow-delay=".3s">"Lo Mejor en rodillos"</p>
-                <br>
                 <a href="<?php echo SERVERURL?>login" class="btn btn-primary btn-lg">Inicia Sesión!</a>
-                <br><br><br><br><br><br><br><br>
+
 </div>
             </div>
-        <div class="flecha-bajar text-xs-center">
+            <div class="flecha-bajar text-xs-center">
             <a data-scroll href="#agencia"> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
         </div>
-
+     
     </section>
 </section>
- 
-
-<script src="public/js/particles.js"></script>
-    <script src="public/js/particulas.js"></script>
-    <script src="public/js/width.js"></script>
-    <script src="public/iconmoon/selection.json"></script>
 
 
 
-<body class="paginas-internas">
-    <section class="bienvenidos">
-    </section>
-    <section class="ruta py-1">
+
+<div class="paginas-internas">
+  <section class="ruta py-1" id="conocenos">
         <div class="container"> 
             <center>
                  <h2 class="wow bounceIn" data-wow-delay=".3s">¿Quiénes somos? y ¿Qué hacemos?.</h2>
             </center>
-            <div class="row">
-                <div class="col-xs-12 text-xs-right">
-                    <a href="index_restaurante.php">Inicio</a> » Nosotros
-
-                </div>
-            </div>
         </div>
     </section>
     <main class="py-1">
@@ -156,7 +217,7 @@
 
 </p>
                                     <p>Específicos:</p> 
--Que nuestro aplicativo cumpla con sus funcones
+-Que nuestro aplcativo cumpla con sus funcones
 </p>
 
                             </div>
@@ -186,102 +247,60 @@
 
 
 
-
-
-
-
-
+               
                 </article>
-                <aside class="col-md-4">
-                    <img src="public/img/rodillo.jpg" alt="Nosotros">
-
+                <aside class="col-md-4" style="margin-top: 4%">
+                    <img style="width: 110%;" src="public/img/rodillo.jpg" alt="Nosotros">
 
                 </aside>
-
 
             </div>
         </div>
     </main>
-
-
-    <a data-scroll class="ir-arriba" href="#encabezado"><i class="fa  fa-arrow-circle-up" aria-hidden="true"> </i> </a>
-
-    <!-- Carga de archivos  JS -->
-
-    <script src="public/homepage/js/jquery.min.js"></script>
-    <script src="public/homepage/js/bootstrap.min.js"></script>
-    <script src="public/homepage/js/wow.min.js"></script>
-    <script src="public/homepage/js/smooth-scroll.min.js"></script>
-    <script src="public/homepage/js/sitio.js"></script>
+  </div>
 
 
 
+<div class="paginas-internas">
 
-
-
-
-
-
-<body class="paginas-internas">
-    
-    <section class="ruta py-1">
-        <div class="container">
+  <section class="ruta py-1" id="contacto">
+        <div class="container"> 
             <center>
-            <h2 class="wow bounceIn" data-wow-delay=".3s">Aqui nos puedes contactar</h2>
-        </center>
-            <div class="row">
-                <div class="col-xs-12 text-xs-right">
-                    <a href="inicio.php">Inicio</a> » Contactenos
-
-                </div>
-            </div>
+                 <h2 class="wow bounceIn" data-wow-delay=".3s">Aqui nos puedes contactar.</h2>
+            </center>
         </div>
     </section>
-    <br>
-    <main class="py-1">
+
+<main class="py-1">
         <div class="container">
             <div class="row">
 
                 <div class="col-md-8">
                     <h2 class="m-b-2">Contáctenos</h2>
 
-                    <center>
-
-                    Rodillos Mastder Ltda.
-Carrera 108 No. 19-62</br>
-Telefonos: 267 6353 - 4153290</br>
-e-mail: informacion@industriasmastder.com</br>
-www.industriasmastder.com</br>
-Medellin - Colomcia - Sur America</br>
-</center>
-
-
-              <br>
-                   <!-- Content -->
-<div id = "content_area">
-  
-</div>
-
-<!-- Footer -->
-<div id = "footer"> 
-<table border="0" cellpadding="15px" align="center"; style="size: 12px; font-family: 'Courier New', Courier, monospace; color: #FFF; font-size: 12px;">
-
-</table>
- </div>
+                   
+<img style="height: 20px;" src="public/img/rodillo.jpg" alt="Nosotros">
+ <span class="fa fa-paint roller" > Rodillos Mastder Ltda.</span><br>
+ <span class="fa fa-map marker alt" > Carrera 108 No. 19-62.</span></br>
+<span class="fa fa-phone" > Telefonos: 267 6353 - 4153290.</span></br>
+ <span class="fa fa-envelope" > e-mail: informacion@industriasmastder.com</span></br>
+ <span class="fa fa-google" > www.industriasmastder.com</span></br>
+  <span class="fa fa-globe americas" > Medellin - Colomcia - Sur America</span></br>
+<br>
 
 
-<h3 class="m-b-2">Enviar Opinión</h2>
+
+              <h3 class="m-b-2">Enviar Mensaje</h2>
 
 <!-- formulario registro -->
 
-
-                    <form method="post" class="ml-2" id="validate_form">
+                    <form method="post"  id="validate_form" autocomplete="off">
 
                         <div class="form-group row">
                             <label  class="col-md-4 col-form-label">Nombres</label>
 
                             <div class="col-md-8">
-                                <input class="form-control" type="text"  name="nombre" placeholder="Ingrese su nombre " data-toggle="tooltip" data-placement="top" title="Ingrese su nombre " required="">
+                                <input style="border: gray solid;" class="form-control" type="text"  name="nombre" placeholder="Ingrese nombre " data-toggle="tooltip" data-placement="top" title="Ingrese su nombre " required="">
                             </div>
                         </div>
 
@@ -289,7 +308,7 @@ Medellin - Colomcia - Sur America</br>
                             <label  class="col-md-4 col-form-label">Correo Electronico</label>
 
                             <div class="col-md-8">
-                                <input class="form-control" type="email"  name="correo" required placeholder="Ingrese Correo Electronico" data-toggle="tooltip" data-placement="top" title="Ingrese  Correo Electronico" required="">
+                                <input style="border: gray solid;" class="form-control" type="email"  name="correo" required placeholder="Ingrese Correo Electronico" data-toggle="tooltip" data-placement="top" title="Ingrese  Correo Electronico" required="">
                             </div>
                         </div>
 
@@ -298,16 +317,16 @@ Medellin - Colomcia - Sur America</br>
                             <label  class="col-md-4 col-form-label">Teléfono</label>
 
                             <div class="col-md-8">
-                                <input class="form-control" type="number"  name="telefono" placeholder="Ingrese su teléfono" data-toggle="tooltip" data-placement="top" title="Ingrese su teléfono" required="">
+                                <input style="border: gray solid;" class="form-control" type="number"  name="telefono" placeholder="Ingrese teléfono" data-toggle="tooltip" data-placement="top" title="Ingrese su teléfono" required="">
                             </div>
                         </div>
 
 
                         <div class="form-group row">
-                            <label  class="col-md-4 col-form-label">Comentario</label>
+                            <label  class="col-md-4 col-form-label">Mensaje</label>
 
                             <div class="col-md-8">
-                                <textarea class="form-control" type="text"  name="comentario" placeholder="Ingrese descripción" data-toggle="tooltip" data-placement="top" title="Ingrese descripción" required=""></textarea>
+                                <textarea style="border: gray solid;" class="form-control" type="text"  name="comentario" placeholder="Ingrese descripción" data-toggle="tooltip" data-placement="top" title="Ingrese descripción" required=""></textarea>
                             </div>
                         </div>
 
@@ -320,14 +339,12 @@ Medellin - Colomcia - Sur America</br>
                             <div class="col-md-8 offset-md-4">
                                 <input type="submit" class="btn btn-primary" name="registrar" value="Enviar"/>
                                 <button type="reset" class="btn btn-secondary">Limpiar</button>
-                                <br>
                             </div>
                         </div>
                     </form>
+                 
   
-                    <!--Fin formulario registro -->
-
-                    <script>  
+   <script>  
 $(document).ready(function(){  
     $('#validate_form').parsley();
 });  
@@ -381,58 +398,147 @@ if (isset($_POST['registrar'])) {
     }
 } ?>
 
-
-                    <h3 class="m-b-2">Ubicación</h2>
+ <h3 class="m-b-2">Ubicación</h2>
                     <br>
                     <center>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.4699761353195!2d-75.58346158535396!3d6.201562595510554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13
-        .1!3m3!1m2!1s0x8e46827be1e85e35%3A0x8fd423ce9b14c888!2sCl.+6+Sur%2C+Medell%C3%ADn%2C+Antioquia!5e0!3m2!1ses-419!2sco!4v1536629734446" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+<iframe style="max-width: 100%; max-height: 100%; 
+mobile-portrait: min:320px - max:479px;
+mobile-landscape: min:480px - max:599px;
+small-tablet-portrait: min:600px - max:799px;
+small-tablet-landscape: min:800px - max:767px;
+tablet-portrait: min:768px - max:1023px;
+tablet-landscape: min:1024px;" 
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.4699761353195!2d-75.58346158535396!3d6.201562595510554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13
+        .1!3m3!1m2!1s0x8e46827be1e85e35%3A0x8fd423ce9b14c888!2sCl.+6+Sur%2C+Medell%C3%ADn%2C+Antioquia!5e0!3m2!1ses-419!2sco!4v1536629734446" width="750" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
         </center>
 
+       
+                   <!-- Content 
 
-              </div>
-                <aside class="col-md-4">
+                   mobile-portrait: min:320px - max:479px;
+mobile-landscape: min:480px - max:599px;
+small-tablet-portrait: min:600px - max:799px;
+small-tablet-landscape: min:800px - max:767px;
+tablet-portrait: min:768px - max:1023px;
+tablet-landscape: min:1024px;
+ -->
+<div id = "content_area">
+  
+</div>
+
+</div>
+<aside class="col-md-4">
                     <h3>Aqui nos puedes contactar</h3>
                     <p> Aqui esta toda nuestra informacion para contactarnos contigo puedes llamar o enviar una opinion,pregunta e.t.c </p>
-                    <br><br>
                     <img style="height: 65%;" src="public/img/nosotros.svg" alt="Nosotros">
                 </aside>
-                 
-
-            </div>
-        </div>
-    </main>
+</div>
+</div>
+</main>
 
 
+  </div>
 
 
-<section class="agencia py-1" id="agencia">
 
+<section class="ultimos-proyectos py-1">
+    <section class="agencia py-1" id="agencia">
         
+        <div class="container"> 
+            <center>
+                 <h2 class="wow bounceIn" data-wow-delay=".3s">Galeria de imagenes.</h2>
+            </center>
+        </div>
+    
+    </section>
+   
 
+
+
+
+        <div class="container">
+           <div class="owl-carousel">
+
+                <a title="Marcas" class="vlightbox" href="public/img/marcas2.jpg">
+                    <h4>Marcas</h4>
+                    <img  src="public/img/marcas2.jpg" alt="Marcas">
+                </a>
+
+                <a title="Colaboradores" class="vlightbox" href="public/img/colaboracion.jpg" >
+                    <h4>Colaboradores</h4>
+                    <img src="public/homepage/images/colaboracion.jpg" alt="Colaboradores">
+                </a>
+
+            <!--    <a title="Rodillo" class="vlightbox" href="public/img/rodillo.jpg" >
+                    <h4>Rodillo</h4>
+                    <img src="public/homepage/images/rodillo.jpg" alt="Rodillo">
+                </a> -->
+
+
+                <a title="Brochas" class="vlightbox" href="public/img/brochas.jpg">
+                    <h4>Brochas</h4>
+                    <img src="public/img/brochas.jpg" alt="Brochas">
+                </a>
+                <a title="Rodillo Felpa" class="vlightbox" href="public/img/Rodillo Felpa.jpg">
+                    <h4>Rodillo Felpa</h4>
+                    <img src="public/img/Rodillo Felpa.jpg" alt="Rodillo Felpa">
+                </a>
+
+              <!--  <a>
+                    <h4>Rodillos Y Brochas</h4>
+                    <img src="public/homepage/brochas.jpg" alt="">
+                </a>-->
+        </div>
+        </div>
     </section>
 
-
-
-
-
+    
 
     <footer class="piedepagina py-1" role="contentinfo">
         <div class="container">
-            <p>2019 © Rodillos Mastder</p>
+            <p>2019 Rodillos GBP</p>
             <ul class="redes-sociales">
-                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"> </i>  </a></li>
+                <li><a href="https://www.facebook.com/J.Sebastian.Henao"><i class="fa fa-facebook" aria-hidden="true"> </i>  </a></li>
                 <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> </a></li>
-                <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i> </a></li>
+                <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> </a></li>
             </ul>
 
         </div>
 
     </footer>
 
+
+
+
     <a data-scroll class="ir-arriba" href="#encabezado"><i class="fa  fa-arrow-circle-up" aria-hidden="true"> </i> </a>
 
-    <!-- Carga de archivos  JS -->
+
+
+   
+        <link rel="stylesheet" href="public/lightbox/visuallightbox.css" type="text/css" />
+<link rel="stylesheet" href="public/lightbox/lightbox/vlightbox.css" type="text/css" />
+<script type="text/javascript" src="public/lightbox/lightbox/jquery.js"></script>
+
+
+    <script type="text/javascript">
+        var $VisualLightBoxParams$ = {autoPlay:true,borderSize:21,enableSlideshow:true,overlayOpacity:0.4,startZoom:true};
+    </script>
+    <script type="text/javascript" src="public/lightbox/lightbox/visuallightbox.js"></script>
+    
+<!--
+Dañan el parsey
+ <script src="public/homepage/js/jquery.min.js"></script>
+ <script type="text/javascript" src="public/lightbox/lightbox/jquery.js"></script>
+  -->
+
+
+
+
+<script src="public/js/particulas.js"></script> 
+<script src="public/js/particles.js"></script>
+    <script src="public/js/particulas.js"></script>
+    <script src="public/js/width.js"></script>
+    <script src="public/iconmoon/selection.json"></script>
 
     <script src="public/homepage/js/jquery.min.js"></script>
     <script src="public/homepage/js/bootstrap.min.js"></script>
@@ -463,71 +569,10 @@ if (isset($_POST['registrar'])) {
             }
         })
 
-
-
     </script>
     <script src="public/homepage/js/wow.min.js"></script>
     <script src="public/homepage/js/smooth-scroll.min.js"></script>
     <script src="public/homepage/js/sitio.js"></script>
 
-
-
-<style type="text/css">
-
-.particulas-fondo {
-    background: url(../../public/img/3.jpg);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.contenedor {
-    background: rgba(0,0,0,.2);
-    position: absolute;
-    width: 100%;
-    height: 100%;    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 50;
-}
-
-header{
-    position: absolute;
-    top: 0;
-    color: #fff;
-    background: rgba(255,255,255,.3);
-    width: 100%;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: space-between;
-}
-
-
-
-.login {
-    background: rgba(0, 0, 0, .5);
-    color: white;
-    width: 30%;
-    height: 50%;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
-
-
-
-</style>
-
 </body>
-
 </html>

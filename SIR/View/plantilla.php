@@ -8,14 +8,19 @@ session_start(['name' => 'SIR']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="<?php echo SERVERURL; ?>public/img/Rodillos GBP.png" type="image/png">
     <title><?php echo COMPANY; ?></title>
+    <script>
+        const SERVERURL = "<?php echo SERVERURL; ?>";
+    </script>
     <?php
-    include 'view/templates/link.php';
+    include 'view/templates/linkHomepage.php';
     require_once 'view/templates/script.php';
     ?>
 </head>
 
-<body class="margin">
+<body class="margin"> 
+
     <?php
     $peticionAjax = false;
     require_once 'controller/vistasController.php';
@@ -39,19 +44,8 @@ session_start(['name' => 'SIR']);
         // session_start(['name' => 'SIR']);
         require_once "./Controller/loginController.php";
         $lc = new loginController();
-        if (!isset($_SESSION['usuario_sir']) || $_SESSION['usuario_sir'] == "" || $_SESSION['usuario_sir'] == null) {
-            $lc->forzar_cierre_sesion_controlador();
-            echo '<script type="text/javascript"> 
-                swal({title: "LISTO",    
-                    text: "Sessión Cerrada Con Exito.", 
-                    type:"success", 
-                    confirmButtonText: "OK", 
-                    closeOnConfirm: true 
-                    }, 
-                    function(){ 
-                    window.location.href="localhosst:8080/PROYECTO-SIR/SIR/login"; 
-                    });  
-                </script>';
+        if (!isset($_SESSION['usuario_sir']) || !isset($_SESSION['token_sir'])) {
+            echo '<script>window.location.href="' . $lc->forzar_cierre_sesion_controlador() . '"</script>';
             die();
         }
         // $varsesion = $_SESSION['usuario_sir'];
@@ -60,12 +54,15 @@ session_start(['name' => 'SIR']);
         //         die();
         //     }   
         require_once 'view/templates/menu.php';
+        include 'view/templates/link.php';
         ?>
         <section class="contentPage">
             <?php require_once $vtr; ?>
         </section>
         <script src="public/js/main.js"></script>
-    <?php endif; ?>
+        <?php
+        require_once "View/templates/logoutScript.php";
+    endif; ?>
 </body>
 
 </html>

@@ -69,7 +69,7 @@ $(document).ready(function() {
 	<tbody id="tablaCuerpo">
   <?php foreach ($control->listar() as $fila):
     ?>
-		<tr estado="<?php echo $fila->numEstado; ?>" idPersona="<?php echo $fila->id_persona;  ?>">
+		  <tr  estado="<?php echo $fila->numEstado; ?>" idPersona="<?php echo $fila->__GET('id_persona'); ?>">
 				<td scope="row" style="display: none"><?php echo $fila->id_persona; ?></td>
 				<td><?php echo $fila->nombres; ?></td>
 				<!-- <td><?php //echo $fila->apellidos; ?></td> -->
@@ -89,7 +89,7 @@ $(document).ready(function() {
 				<!-- <a href="<?php //echo SERVERURL; ?>editPerson?id=<?php// echo $fila->id_persona; ?>" title="Editar" class='btn btn-primary' >Editar <i style="margin-left: 10px;" class="fa fa-pencil-square-o" aria-hidden="true" ></i></a> -->
         <!-- <button class="btn btn-primary persona-editar text-center">Editar<i class="fa fa-pencil-square-o" aria-hidden="true"  style="margin-left: 10px;" ></i></button> -->
 
-        <a href="#" data-target="#miModal" data-toggle="modal" class='btn btn-primary pull-center' ><i class="fa fa-eye"title="Información completa" data-toggle="tooltip" data-placement="top" aria-hidden="true"></i></a> 
+        <a href="#" class="btn btn-primary mostrarDetalle" data-toggle="modal" data-target="#miModal"><i class="fa fa-eye" aria-hidden="true"></i></a>
 
         <button title="Cambiar Estado" data-toggle="tooltip" data-placement="top" class="btn btn-danger pull-center persona-cambiar text-center"><i class="fas fa-sync-alt fa-spin" aria-hidden="true" ></i></button>
         <!-- <a href="<?php echo SERVERURL; ?>deletePerson?id=<?php echo $fila->id_persona; ?>" title="Eliminar" class='btn btn-danger delete' ><i class="fa fa-trash-o" aria-hidden="true" ></i></a> -->
@@ -112,7 +112,7 @@ $(document).ready(function() {
           <span aria-hidden="true">&times;</span>
         </button>
         <center>
-        <h4 class="modal-title" id="myModalLabel">Información De La Persona</h4>
+        <h4 class="modal-title" id="myModalLabel"><b>Información De La Persona</b></h4>
       </center>
       </div>
       <div class="modal-body">
@@ -124,45 +124,7 @@ $(document).ready(function() {
                   <td width="2%"></td>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>
-
-              <label>Nombres:</label>
-               <?php echo $fila->__GET('nombres'); ?>
-               <br> 
-               <label>Apellidos:</label>
-               <?php echo $fila->__GET('apellidos'); ?> 
-               <br>
-               <label>Tipo Documento:</label>
-               <?php echo $fila->__GET('nombre_documento');?> 
-               <br>
-               <label>Documento:</label>
-               <?php echo $fila->__GET('documento'); ?> 
-               <br>
-               <label>Telefono:</label>
-               <?php echo $fila->__GET('telefono'); ?> 
-               <br>
-               <label>Nro Celular:</label>
-               <?php echo $fila->__GET('nro_Celular'); ?> 
-               </td>
-               <td>
-               <label>Direccion:</label>
-               <?php echo $fila->__GET('direccion'); ?> 
-               <br>
-               <label>Ciudad:</label>
-               <?php echo $fila->__GET('ciudad'); ?> 
-               <br>
-               <label>Departamento:</label>
-               <?php echo $fila->__GET('departamento'); ?> 
-               <br>
-               <label>Tipo Persona:</label>
-               <?php echo $fila->__GET('nombre_tipo'); ?> 
-
-               <label>Estado:</label>
-               <?php echo $fila->__GET('estado'); ?> 
-                </td>
-            </tr>
+          <tbody id="detalle">
           </tbody>
         </table>
               <br>
@@ -175,6 +137,56 @@ $(document).ready(function() {
     </div>
   </div>
 </div>
+
+
+<script>
+       jQuery(document).ready(function($){
+            $('.mostrarDetalle').on('click',function(){
+              let element = $(this)[0].parentElement.parentElement;
+              let idp = $(element).attr('idPersona');
+              const postData = {
+                  idp : idp,
+               }
+               $.post('http://localhost:8080/PROYECTO-SIR/SIR/Controller/personController1.php', postData, function(response) {
+                  console.log(response);
+                  let productos = JSON.parse(response);
+                  let template = '';
+                  productos.forEach(productos => {
+                      template += `
+                          <tr>
+                           <td>
+                           <h4>
+                           <label>Nombres: </label> ${productos.nombres}<br>
+                           <label>Apellidos: </label> ${productos.apellidos}<br>
+                          <label>Documento: </label> ${productos.documento}<br>
+                          <label>Telefono: </label> ${productos.telefono}<br>
+                          <label>Celular: </label> ${productos.nro_Celular}<br></h4>
+                          </td>
+                          
+                          
+                          <td>
+                          <h4>
+                          <label>Dirección: </label> ${productos.direccion}<br>
+                          <label>Ciudad: </label> ${productos.ciudad}<br>
+                          <label>Departamento: </label> ${productos.departamento}<br>
+                          <label>Tipo Persona: </label> ${productos.nombre_tipo}<br>
+                          <label>Estado: </label> ${productos.estado}<br></h4>
+                          </td>
+                       
+                          </tr>
+                      `;
+                  });
+                  $('#detalle').html(template);
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+
 	<script>
       function VentanaCentrada(theURL,winName,features, myWidth, myHeight, isCenter) { //v3.0
       if(window.screen)if(isCenter)if(isCenter=="true"){

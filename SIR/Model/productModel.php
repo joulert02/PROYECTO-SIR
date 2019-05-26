@@ -95,7 +95,7 @@ class productoModel extends mainModel
 		$datosProductos=array();
 		$consulta="SELECT * FROM `tbl_producto` ORDER BY `tbl_producto`.`id_producto` ASC";
 		try {
-			$resultado=mainModel::conectar()->prepare($consulta);
+			$resultado= mainModel::conectar()->prepare($consulta);
 			$resultado->execute();
 			foreach ($resultado->fetchAll(PDO::FETCH_OBJ) as $datos) {
 				$producto = new productoModel();

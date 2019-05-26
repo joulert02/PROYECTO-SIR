@@ -4,16 +4,10 @@
 $usuario = new Usuario();
 $control = new User_Controller();
 $resultado=$control->buscar('id_usuario');
-
-$host="root";
-$contraseña="";
-$conexionbd = new PDO('mysql:host=localhost;dbname=s.i.r', $host, $contraseña);
-$data = $conexionbd->query("SELECT * FROM tbl_usuario");
 ?>
-
 <br>
 <div class="container-fluid">
-  <div class="col-md-16">
+  <div class="col-md-8 col-xs-12 col-md-offset-2 mt-1">
       <div class="panel panel-default">
           <div class="panel-heading clearfix">
              <span class="glyphicon glyphicon-edit fa-fax3 fa-lg"></span>
@@ -22,17 +16,16 @@ $data = $conexionbd->query("SELECT * FROM tbl_usuario");
         <div class="panel-body">
           <div class="form-row">
             <div class="col-md-4">
-                <img class="img-circle img-size-2" src="<?php while ($row = $data->fetch()) {
-       echo $row['url'];}?>" alt="">
+                <img class="img-circle img-size-2" src="<?php echo $_SESSION['url_sir']; ?>" alt="">
             </div>
             <div class="col-md-8">
               <h5><label class="control-label">Seleccione una imagen</label></h5>
-              <form class="form" action="upload" id="validate_form"  method="POST" enctype="multipart/form-data">
+              <form class="form" id="validate_form"  method="POST" enctype="multipart/form-data">
               <div class="form-group">
                 <input type="file" name="img" class="btn btn-default btn-file" required />
               </div>
               <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Cambiar">
+                <input type="submit" name="cambiar" class="btn btn-primary" value="Cambiar">
               </div>
              </form>
             
@@ -43,11 +36,11 @@ $data = $conexionbd->query("SELECT * FROM tbl_usuario");
               <div class="form-row">
             <div class="col-md-6 mb-3">
                   <label for="name" class="control-label">Nombre</label>
-                  <input type="name" class="form-control" name="nombre" required value="<?php echo $resultado->nombre; ?>">  <br>
+                  <input type="name" class="form-control" name="nombre" required value="<?php echo $_SESSION['usuario_sir']; ?>">  <br>
             </div>
             <div class="col-md-6 mb-3">
                   <label for="username" class="control-label">Correo</label>
-                  <input type="email" class="form-control" name="correo" required data-parsley-type="email" value="<?php echo $resultado->correo; ?>">  <br>
+                  <input type="email" class="form-control" name="correo" required data-parsley-type="email" value="<?php echo $_SESSION['correo_sir']; ?>">  <br>
             </div>
             <div class="col-md-12 mb-3">
                     <a href="<?php echo SERVERURL ?>changePassword" title="change password" class="btn btn-danger pull-right">Cambiar contraseña</a>
@@ -70,6 +63,33 @@ $(document).ready(function(){
      var instance =$('#validate_form2').parsley();
   });  
 </script>
+
+<?php 
+if (isset($_POST['cambiar'])) {
+$conexionbd = new PDO("mysql:host=localhost;dbname=s.i.r", "root", "");
+$nombrefoto = $_FILES['img']['name'];
+$rutaaguardar = $_FILES['img']['tmp_name'];
+$destinourl = "public/img/".$nombrefoto;
+copy($rutaaguardar,$destinourl);
+
+$conexionbd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$sql = "UPDATE tbl_usuario set imagen='$nombrefoto', url='$destinourl' WHERE id_usuario=1";
+$conexionbd->exec($sql);
+$_SESSION['url_sir']=$destinourl;
+echo'<script type="text/javascript"> 
+swal({title: "LISTO",    
+      text: "Imagen actualizada correctamente!.", 
+      type:"success", 
+      confirmButtonText: "OK", 
+      closeOnConfirm: false 
+    }, 
+    function(){ 
+      window.location.href="'.SERVERURL.'editAccount"; 
+    });  
+</script>'; 
+
+} 
+?>
 
 
   <?php 

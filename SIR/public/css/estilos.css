@@ -19,7 +19,7 @@ body {
 
 
 .bienvenidos {
-  background: url("../../public/img/fondo.jpg") no-repeat center top;
+  /*background: url("../../public/img/3.jpg") no-repeat center top;*/
   color: #fff;
   background-size: cover;
   background-attachment: fixed !important;
@@ -249,7 +249,7 @@ SECCION TU MEJOR ELECCI├ôN
 SECCION SERVICIOS
 --------------------------------*/
 .servicios {
-  background: url("../../public/img/fondo.jpg") no-repeat center center;
+ /* background: url("../../public/img/fondo.jpg") no-repeat center center;*/
   background-size: cover;
   background-attachment: fixed !important;
   color: #fff; }

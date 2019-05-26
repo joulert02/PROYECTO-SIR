@@ -20,7 +20,7 @@
 			$rs=mysqli_query($this->conn,$sql);
 			$i=0;
 			$html=$html. '<head>
-             <img src="http://localhost/SIR/public/img/Rodillos GBP.png" style="width: 100px; height: 100px" alt="">
+            <img src="http://localhost:8080/PROYECTO-SIR/SIR/public/img/Rodillos GBP.png" style="width: 100px; height: 100px" alt="">
              <head>';
 
 			$html=$html.'<div align="center">

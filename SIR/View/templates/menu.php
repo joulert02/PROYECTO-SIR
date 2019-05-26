@@ -1,33 +1,14 @@
-<?php
-  require_once 'Controller/user_controller.php';
-  require_once 'Model/user_model.php';
-
-$control = new User_Controller();
-$resultado=$control->buscar('id_usuario');
-
-$host="root";
-$contraseña="";
-$conexionbd = new PDO('mysql:host=localhost;dbname=s.i.r', $host, $contraseña);
-$data = $conexionbd->query("SELECT * FROM tbl_usuario");
-$url;
-while ($row = $data->fetch()) {
-       
-    $url= $row['url'];
-    
-    }
-
-?>
 <header>
     <section class="header" style="top:0; color:white;">
-    <?php
-  require_once "header.php";
-//    echo date("d/m/Y  g:i a ");
-   //echo date("d/m/Y H:i ");
-  ?>
-    <!-- <a href="cerrarS.php"><i class="icon-switch"></i>Cerrar Sesión</a> -->
+        <?php
+        require_once "header.php";
+        //    echo date("d/m/Y  g:i a ");
+        //echo date("d/m/Y H:i ");
+        ?>
+        <!-- <a href="cerrarS.php"><i class="icon-switch"></i>Cerrar Sesión</a> -->
     </section>
     <input id="navbar" class="navbar" type='checkbox' style="display: none;">
-    
+
     <label for="navbar">
         <div class='btn-menuweb'>
             <span class='hamburger'></span>
@@ -36,18 +17,18 @@ while ($row = $data->fetch()) {
     <nav class="contenedor-menu" id="contenedor-menu" style="z-index: 1000;">
         <a href="#" class="btn-menu">Menu <i class="icono icon-menu"></i></a>
         <ul class="menu" style="z-index: 1000;">
-            <!-- <li class="img-contenedor"><img src="<?php echo SERVERURL; ?>public/img/user-img.jpg" alt="error logo" class="logo-menu"><span>Bienvenido <span></li> -->
-            
-            
+            <!-- <li class="img-contenedor"><img src="<?php//echo SERVERURL; ?>public/img/user-img.jpg" alt="error logo" class="logo-menu"><span>Bienvenido <span></li> -->
+
+
             <center>
-            <img class="img-circle img-size-2" src="<?php echo SERVERURL.$url ?>" alt="errro">
-            <h3><?php echo $resultado->nombre; ?> </h3>
-            <a href="<?php echo SERVERURL; ?>editAccount" title="Editar Cuenta">
-                     <i class="glyphicon glyphicon-cog"></i>
-                 </a>  |
-                  <a href="<?php echo SERVERURL; ?>logout" title="Cerrar Sesión">
-                     <i class="glyphicon glyphicon-off"></i>
-                 </a>
+                <img class="img-circle img-size-2" src="<?php echo SERVERURL . $_SESSION['url_sir']; ?>" alt="errro">
+                <h3><?php echo $_SESSION['usuario_sir']; ?> </h3>
+                <a href="<?php echo SERVERURL; ?>editAccount" title="Editar Cuenta">
+                    <i class="glyphicon glyphicon-cog"></i>
+                </a> |
+                <a href="<?php echo mainModel::encryption($_SESSION['token_sir']); ?>" title="Cerrar Sesión">
+                    <i class="glyphicon glyphicon-off"></i>
+                </a>
             </center>
 
 
@@ -71,7 +52,7 @@ while ($row = $data->fetch()) {
                     <li><a href="<?php echo SERVERURL; ?>listEntry">Consulta Entrada</a></li>
                 </ul>
             </li>
-            
+
             <li><a href="#"><i class="icono izquierda icon-spinner9"></i>Salida <i class="icono derecha icon-circle-down"></i></a>
                 <ul>
                     <li><a href="<?php echo SERVERURL; ?>addExit">Registrar Salida</a></li>
@@ -88,7 +69,7 @@ while ($row = $data->fetch()) {
                 <ul>
                     <li><a href="<?php echo SERVERURL; ?>Categoria">Tipo Categoria</a></li>
                     <li><a href="<?php echo SERVERURL; ?>tipoSalida">Tipo Salida</a></li>
-                   <!--  <li><a href="<?php echo SERVERURL; ?>addCategory">Registrar Categoria</a></li>
+                    <!--  <li><a href="<?php echo SERVERURL; ?>addCategory">Registrar Categoria</a></li>
                     <li><a href="<?php echo SERVERURL; ?>listCategory">Consultar Categoria</a></li> -->
                     <!-- <li><a href="<?php echo SERVERURL; ?>tipoDocumento/">Gestión Tipo Documento</a></li> -->
                 </ul>

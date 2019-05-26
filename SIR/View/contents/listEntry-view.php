@@ -4,7 +4,8 @@
 	// $cnx->conectar();
 
 	require_once "Controller/entryController.php";
-	$control = new entryController();
+  $control = new entryController();
+  $control2 = new entryController();
 ?>
 <script>
 
@@ -50,24 +51,31 @@ $(document).ready(function() {
 			<!-- <td scope="col">Nombre Producto</td> -->
 			<!-- <td scope="col">Referencia</td> -->
 			<!-- <td scope="col">Cantidad</td> -->
-			<td scope="col">Fecha Entrada</td>
+      <td scope="col">Fecha Entrada</td>
+      <td scope="col">Referencias</td>
 			<td scope="col">Acciones</td>
 		</tr>
 		</thead>
 		<tbody>
 			<?php $contador=1; foreach ($control->listar() as $fila):
         ?>
-        <tr idDetalle="<?php echo $fila->Entrada_id_entrada; ?>">
+
+        <tr idDetalle="<?php echo $fila->__GET('Entrada_id_entrada'); ?>">
           <td scope="row" style="display: none"><?php echo $fila->Entrada_id_entrada; ?></td>
           <!-- <td><?php //echo $fila->nombre_producto; ?></td> -->
           <!-- <td><?php //echo $fila->referencia; ?></td> -->
           <!-- <td><?php //echo $fila->cantidad; ?></td> -->
           <td><?php echo $fila->fecha_entrada; ?></td>
           <td>
-          <a href="<?php echo SERVERURL; ?>editEntry?id=<?php echo $fila->Entrada_id_entrada; ?>" title="Editar" class='btn btn-primary' ><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
-            <?php $_SESSION['id'.$contador]=$fila->Entrada_id_entrada;
-            $contador++;
-            ?>
+             <?php foreach ($control2->listarReferencias($fila->__GET('Entrada_id_entrada')) as $filas):
+        ?>
+            <?php echo $filas->referencia.",  "; ?>
+              <?php endforeach; ?>
+            </td>
+             
+          <td>
+         <a href="editEntry/<?php echo mainModel::encryption($fila->Entrada_id_entrada); ?>" title="Editar Entrada" data-toggle="tooltip" data-placement="top" class='btn btn-primary pull-center' > <i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
+            
             <a href="#" class="btn btn-primary mostrarDetalle" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-eye" aria-hidden="true"></i></a> 
           </td>
       </tr>
@@ -84,7 +92,7 @@ $(document).ready(function() {
           <span aria-hidden="true">&times;</span>
         </button>
         <center>
-        <h4 class="modal-title" id="myModalLabel">Informacion De Pedido</h4>
+        <h4 class="modal-title" id="myModalLabel">Informacion De La Entrada</h4>
       </center>
       </div>
       <div class="modal-body">
@@ -95,7 +103,8 @@ $(document).ready(function() {
 			      <td scope="col" style="display: none">ID Entrada</td>
 			      <td scope="col">Nombre Producto</td>
 			      <td scope="col">Referencia</td>
-			      <td scope="col">Cantidad</td>
+            <td scope="col">Cantidad</td>
+            <td scope="col">Fecha</td>
 			      <!-- <td scope="col">Acciones</td> -->
 		        </tr>
 		    </thead>

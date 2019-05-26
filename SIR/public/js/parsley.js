@@ -2426,7 +2426,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     //maxlength: "This value is too long. It should have %s characters or fewer.",
     maxlength: "Este valor es demasiado largo. Debe tener %s caracteres o menos.",
     //length: "This value length is invalid. It should be between %s and %s characters long.",
-    length: "Este valor debe tener entre %s y %s caracteres.",
+    length: "Debe tener entre %s y %s caracteres.",
     //mincheck: "You must select at least %s choices.",
     mincheck: "Debe seleccionar al menos %s opciones.",
     //maxcheck: "You must select %s choices or fewer.",

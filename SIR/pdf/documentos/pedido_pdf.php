@@ -18,14 +18,14 @@
 	echo "<script>window.close();</script>";
 	exit;
 	}
-
+	
 	require_once(dirname(__FILE__).'/../html2pdf.class.php');
 		
 	//Variables por GET
 	$proveedor=intval($_GET['proveedor']);
 	$estadoP=mysqli_real_escape_string($con,(strip_tags($_REQUEST['estado'], ENT_QUOTES)));
 	$transporte=mysqli_real_escape_string($con,(strip_tags($_REQUEST['transporte'], ENT_QUOTES)));
-	$condiciones=mysqli_real_escape_string($con,(strip_tags($_REQUEST['condiciones'], ENT_QUOTES)));
+	// $condiciones=mysqli_real_escape_string($con,(strip_tags($_REQUEST['condiciones'], ENT_QUOTES)));
 	$comentarios=mysqli_real_escape_string($con,(strip_tags($_REQUEST['comentarios'], ENT_QUOTES)));
 	//Fin de variables por GET
 	
@@ -46,7 +46,7 @@
 		// echo "Connected successfully"; 
 		$sumador_total=0;
 		$date=date("Y-m-d H:i:s");
-		$insert=mysqli_query($con,"INSERT INTO tbl_pedido VALUES ('','$proveedor','$condiciones','Liliana Ospina','$date','$date','$transporte','$estadoP','$comentarios')");
+		$insert=mysqli_query($con,"INSERT INTO tbl_pedido VALUES ('','$proveedor','Liliana Ospina','$date','$date','$transporte','$estadoP','$comentarios')");
 		$sql=mysqli_query($con, "select LAST_INSERT_ID(id_pedido) as last from tbl_pedido order by id_pedido desc limit 0,1 ");
 		$rw=mysqli_fetch_array($sql);
 		$numero_pedido=$rw['last'];	
@@ -59,7 +59,7 @@
                 
             </td>
 			<td style="width: 75%;text-align:right;font-size:24px;color:#2c3e50">
-			COMPROOBANTE Nº '.$condiciones.'
+			COMPROOBANTE Nº
 			</td>
 			
         </tr>

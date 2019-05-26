@@ -69,10 +69,11 @@ class personController extends personModel
 
 			if ($guardarPerson->rowCount() >= 1) {
 				$alerta = [
-					"Alerta" => "limpiar",
+					"Alerta" => "recargar",
 					"Titulo" => "Persona Registrada",
 					"Texto" => "La persona se ha registrado con exito en el sistema.",
-					"Tipo" => "success"
+					"Tipo" => "success",
+					"url" => "listPerson/"
 				];
 			} else {
 				$alerta = [

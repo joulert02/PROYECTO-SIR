@@ -11,6 +11,7 @@ copy($rutaaguardar,$destinourl);
 $conexionbd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $sql = "UPDATE tbl_usuario set imagen='$nombrefoto', url='$destinourl' WHERE id_usuario=1";
 $conexionbd->exec($sql);
+$_SESSION['url_sir']=$destinourl;
 echo'<script type="text/javascript"> 
 swal({title: "LISTO",    
       text: "Imagen actualizada correctamente!.", 

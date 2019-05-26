@@ -43,15 +43,25 @@ if ($peticionAjax==true) {
 			$entradaModel = new entryModel();
 			return $entradaModel->listar();
 		}
+		public function listarReferencias($id)
+		{
+			$entradaModel = new entryModel();
+			return $entradaModel->listarReferencias($id);
+		}
 		public function insertar(entryModel $entrada)
 		{
 			$entradaModel = new entryModel();
 			return $entradaModel->insertar($entrada);
 		}
-		public function buscar($id)
+		public function buscar()
 		{
 			$entradaModel = new entryModel();
-			return $entradaModel->buscar($id);
+			return $entradaModel->buscar();
+		}
+		public function insertTmp($id,$cantidad)
+		{
+			$entradaModel = new entryModel();
+			return $entradaModel->insertTmp($id,$cantidad);
 		}
 		public function actualizar(entryModel $entrada)
 		{

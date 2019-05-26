@@ -6,7 +6,6 @@ if (isset($_POST['id'])){$id=$_POST['id'];}
 if (isset($_POST['cantidad'])){$cantidad=$_POST['cantidad'];}
 if (isset($_POST['precio_venta'])){$precio_venta=$_POST['precio_venta'];}
 if (isset($_POST['estado'])){$precio_venta=$_POST['estado'];}
-
 	/* Connect To Database*/
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
@@ -72,7 +71,7 @@ $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id."'");
 ?>
 <tr>
 	<td colspan=4><span class="pull-right">TOTAL $</span></td>
-	<td><span class="pull-right"><?php echo number_format($sumador_total,2);?></span></td>
+	<td><span class="pull-right" id="totalj" tr="<?php echo number_format($sumador_total,2);?>"><?php echo number_format($sumador_total,2);?></span></td>
 	<td></td>
 </tr>
 </table>
