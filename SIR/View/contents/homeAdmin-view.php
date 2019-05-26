@@ -1,12 +1,8 @@
 <?php
-$usu=$_SESSION['usuario_sir'];
-$nombre=$_SESSION['correo_sir'];
+$usu = $_SESSION['usuario_sir'];
+$nombre = $_SESSION['correo_sir'];
 include 'Model/productModel.php';
-$controlp= new productoModel();
-
-$usuario = new Usuario();
-$control = new User_Controller();
-$resultado=$control->buscar('id_usuario');
+$controlp = new productoModel();
 
 ?>
 
@@ -73,13 +69,9 @@ $CantidadSalidas = count($contarRegistros5);
    ?>
    
 <div class="container-fluid">
-<div class="row">
-   <div class="col-md-14">
-
-   </div>
-</div>
+  <div class="col-md-10 col-xs-12 col-md-offset-1 mt-1">
        <center>
-       	<h1>Administración</h1>
+        <h1>Administración</h1>
        <br><br>
  <div class="row">
     <div class="col-md-4">
@@ -240,4 +232,4 @@ $(document).ready(function() {
       </article>
     </section>
   </div>
-  <center>
+  </div>

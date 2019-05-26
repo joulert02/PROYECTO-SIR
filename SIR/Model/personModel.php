@@ -7,7 +7,7 @@
 		include_once "Model/tipoDocumento_Persona_model.php";
 }
 
-	class personModel extends conexion
+	class personModel extends mainModel
 	{
 		private $id_persona;
 		private $nombres;
@@ -89,7 +89,7 @@
 			 INNER JOIN tbl_tipo_documento doc ON per.tipo_documento_tipo_documento = doc.tipo_documento 
 			 INNER JOIN tbl_tipo_persona tper ON per.tipo_persona_tipo_persona = tper.tipo_persona ORDER BY per.id_persona DESC";
 			try{
-				$resultado = $this->conexion->query($consultar);
+				$resultado = mainModel::conectar()->query($consultar);
 				// $resultado = execute();
 
 				foreach ($resultado->fetchAll(PDO::FETCH_OBJ) as $dato) {
@@ -120,7 +120,7 @@
 		{
 			$buscar  = "SELECT * FROM tbl_persona WHERE id_persona=?";
 			try{
-				$resultado = $this->conexion->prepare($buscar);
+				$resultado = mainModel::conectar()->prepare($buscar);
 				$resultado->execute(array($id));
 
 				$datos = $resultado->fetch(PDO::FETCH_OBJ);

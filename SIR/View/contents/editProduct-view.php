@@ -14,21 +14,21 @@ $conec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $resultadoPro=$conec->prepare($buscar);
   $datosUrl = explode("/",$_GET["views"]);
   $idP = mainModel::decryption($datosUrl[1]);
-	$resultadoPro->execute(array($idP));
-	$resultadoProducto;
-	$datos=$resultadoPro->fetch(PDO::FETCH_OBJ);
-	if ($datos==null) {
-		return false;
-	}else {
-		$producto = new productoModel1();
-		$producto->__SET('id_producto',$datos->id_producto);
-		$producto->__SET('nombre_producto',$datos->nombre_producto);
-		$producto->__SET('referencia',$datos->referencia);
-		$producto->__SET('precio_unitario',$datos->precio_unitario);
-		$producto->__SET('Categoria_Producto_id_Categoria',$datos->Categoria_Producto_id_Categoria);
-		$producto->__SET('Persona_id_persona',$datos->Persona_id_persona);
-		$producto->__SET('cantidad',$datos->cantidad);
-		$producto->__SET('estado',$datos->estado);
+  $resultadoPro->execute(array($idP));
+  $resultadoProducto;
+  $datos=$resultadoPro->fetch(PDO::FETCH_OBJ);
+  if ($datos==null) {
+    return false;
+  }else {
+    $producto = new productoModel1();
+    $producto->__SET('id_producto',$datos->id_producto);
+    $producto->__SET('nombre_producto',$datos->nombre_producto);
+    $producto->__SET('referencia',$datos->referencia);
+    $producto->__SET('precio_unitario',$datos->precio_unitario);
+    $producto->__SET('Categoria_Producto_id_Categoria',$datos->Categoria_Producto_id_Categoria);
+    $producto->__SET('Persona_id_persona',$datos->Persona_id_persona);
+    $producto->__SET('cantidad',$datos->cantidad);
+    $producto->__SET('estado',$datos->estado);
     $resultadoProducto=$producto;
     }
 ?>
@@ -41,7 +41,7 @@ $conec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 <br>        
 <div class="container-fluid">
-    <div class="col-md-16">
+    <div class="col-md-10 col-xs-12 col-md-offset-1 mt-1">
       <div class="panel panel-default">
           <div class="panel-heading clearfix">&nbsp&nbsp
              <span class="glyphicon glyphicon-edit fa-fax3 fa-lg"></span>
@@ -54,17 +54,17 @@ $conec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         <div class="col-md-4 mb-3">
           <label>referencia*</label><br>
           <input type="text" name="referencia" class="form-control" placeholder="Ingrese referencia"  required 
-					value="<?php echo $resultadoProducto->__GET('referencia')?>"><br>
+          value="<?php echo $resultadoProducto->__GET('referencia')?>"><br>
         </div>
         <div class="col-md-4 mb-3">
           <label>Nombre Producto*</label><br>
           <input type="text" name="nombre_producto" class="form-control" placeholder="Ingrese Nombre del producto"  required data-parsley-length="[3,20]" 
-					value="<?php echo $resultadoProducto->__GET('nombre_producto')?>"><br>
+          value="<?php echo $resultadoProducto->__GET('nombre_producto')?>"><br>
         </div>
         <div class="col-md-4 mb-3">
           <label>Precio Unitario*</label><br>
           <input type="number" name="precio_unitario" class="form-control" placeholder="Precio Unitario" required data-parsley-type="number" 
-					value="<?php echo $resultadoProducto->__GET('precio_unitario')?>"><br>
+          value="<?php echo $resultadoProducto->__GET('precio_unitario')?>"><br>
         </div>
         <div class="col-md-4 mb-3">
           <label>Categoria*</label><br>
@@ -88,7 +88,7 @@ $conec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
               echo '<option value="'.$resultadoProducto->__GET('Categoria_Producto_id_Categoria').'"selected>'.$r->categoria.'</option>';
             }else {
               echo '<option value="'.$r->id_Categoria.'">'.$r->categoria.'</option>';
-						}
+            }
           }
           var_dump($datocategoria);
 
@@ -128,33 +128,33 @@ $conec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 var_dump($datosPerson);
               foreach ($datosPerson as $dat) {
                   if ($dat->numEstado==1 and $dat->nombre_tipo=="Proveedor" && $dat->id_persona==$resultadoProducto->Persona_id_persona) {
-									echo '<option value="'.$resultadoProducto->Categoria_Producto_id_Categoria.'"selected>'.$dat->nombres.'</option>';
+                  echo '<option value="'.$resultadoProducto->Categoria_Producto_id_Categoria.'"selected>'.$dat->nombres.'</option>';
                 }else{
-									echo '<option value="'.$dat->id_persona.'">'.$dat->nombres.'</option>';
-								}
-							}
+                  echo '<option value="'.$dat->id_persona.'">'.$dat->nombres.'</option>';
+                }
+              }
             ?>
           </select><br>
         </div>
         <div class="col-md-4 mb-3">
           <label>Cantidad*</label><br>
           <input type="number" name="cantidad" class="form-control" placeholder="Cantidad"  required data-parsley-type="number" 
-					value="<?php echo $resultadoProducto->__GET('cantidad'); ?>"><br>
+          value="<?php echo $resultadoProducto->__GET('cantidad'); ?>"><br>
         </div>
         <div class="col-md-4 mb-3">
         <label>Estado*</label><br>
           <select name="estado" class="custom-select form-control" required="">
-						<option value="true"disabled>Seleccione estado</option>
-						<?php
+            <option value="true"disabled>Seleccione estado</option>
+            <?php
             if ($resultadoProducto->__GET('estado')==1) {
             echo '<option value="1" selected>Activo</option>
-								<option value="0">Inactivo</option>';
-							}else {
-								echo '<option value="1">Activo</option>
-								<option value="0"selected>Inactivo</option>';
-							}
-						?>						
-					</select><br>
+                <option value="0">Inactivo</option>';
+              }else {
+                echo '<option value="1">Activo</option>
+                <option value="0"selected>Inactivo</option>';
+              }
+            ?>            
+          </select><br>
         </div>
       </div>
       <div class="col-md-12">
@@ -180,11 +180,11 @@ $(document).ready(function(){
 if (isset($_POST['submit'])) {
   $producto->__SET('id_producto',$idP);
   $producto->__SET('referencia',$_POST['referencia']);
-	$producto->__SET('nombre_producto',$_POST['nombre_producto']);
-	$producto->__SET('precio_unitario',$_POST['precio_unitario']);
+  $producto->__SET('nombre_producto',$_POST['nombre_producto']);
+  $producto->__SET('precio_unitario',$_POST['precio_unitario']);
   $producto->__SET('Categoria_Producto_id_Categoria',$_POST['Categoria_Producto_id_Categoria']);
-	$producto->__SET('Persona_id_persona',$_POST['Persona_id_persona']);
-	$producto->__SET('cantidad',$_POST['cantidad']);
+  $producto->__SET('Persona_id_persona',$_POST['Persona_id_persona']);
+  $producto->__SET('cantidad',$_POST['cantidad']);
   $producto->__SET('estado',$_POST['estado']);
 
   $actualizar="UPDATE `tbl_producto` SET `referencia`=? ,`nombre_producto`=?,`precio_unitario`=?,

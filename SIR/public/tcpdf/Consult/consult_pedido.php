@@ -1,17 +1,17 @@
 
 <?php 
       session_start();
-  	require "../../public/tcpdf/config/config.php";
-	class consulta{
-		var $conn;
-		var $conexion;
-		function consulta(){		
-			$this->conexion= new  Conexion();				
-			$this->conn=$this->conexion->conectarse();
-		}	
-		//-----------------------------------------------------------------------------------------------------------------------
-		//-----------------------------------------------------------------------------------------------------------------------
-		function comprobantePdfPedido(){	
+      require "../../public/tcpdf/config/config.php";
+      class consulta{
+            var $conn;
+            var $conexion;
+            function consulta(){          
+                  $this->conexion= new  Conexion();                     
+                  $this->conn=$this->conexion->conectarse();
+            }     
+            //-----------------------------------------------------------------------------------------------------------------------
+            //-----------------------------------------------------------------------------------------------------------------------
+            function comprobantePdfPedido(){    
             $html="";
             $session_id= session_id();
     //  $sql_count=mysqli_query($con,"select * from tmp where session_id='".$session_id."'");
@@ -22,6 +22,16 @@
     //  echo "<script>window.close();</script>";
    //   exit;
     //  }
+
+             $conec = new PDO("mysql:host=localhost;dbname=s.i.r", "root", "");
+$Consulta = $conec->prepare("SELECT * FROM tmp");
+$Consulta ->  execute();
+$contarRegistros = $Consulta -> fetchAll();
+if ($CantidadPersonas = (count($contarRegistros)==0)) {
+      echo "<script>alert('No hay productos agregados al pedido')</script>";
+       echo "<script>window.close();</script>";
+}
+
 
             
       //Variables por GET
@@ -59,7 +69,7 @@
         <tr>
 
             <td  style="width: 28%; color: #444444;">
-                <img src="http://localhost/SIR/public/img/Rodillos GBP.png" style="width: 100px; height: 100px" alt="">
+                <img src="http://localhost:8080/PROYECTO-SIR/SIR/public/img/Rodillos GBP.png" style="width: 100px; height: 100px" alt="">
                 
             </td>
                   <td style:"45%">
@@ -74,8 +84,12 @@
     </table>
     <br>
             ';
-            $html=$html. '<p align="center">Cra 108 Nro 19-62 Telefax: 2679629  Telefono: 2676353  Email: Informacion@industriasmastder.com - Bogotá</p>';
+            $html=$html. '<label></label><br><br>';
+            $html=$html. '<label align="center">Cra 108 Nro 19-62 Telefax: 2679629  Telefono: 2676353  Email: Informacion@industriasmastder.com - Bogotá</label>';
 
+
+
+            $html=$html. '<label></label><br><br><br><br><br>';
             $html=$html.'<table border="0" width="100%" cellpadding="5" cellspacing="5" > ';
             $html=$html.'  <tr> ';
             $html=$html.'  <td width="50%"> ';
@@ -266,18 +280,19 @@
             }catch(PDOException $e){
             $html=$html. "Connection failed: " . $e->getMessage();
       }
+       $html=$html. '<label></label><br><br>';
       
       $html=$html. '
       <br>
       <p style="font-size:11pt;text-align:center">Si tiene alguna consulta sobre este pedido por favor contácte a:<br>
             '. $rw_perfil['propietario'].'", <strong>Teléfono: </strong>"'.$rw_perfil['telefono'].'", <strong>Email:</strong> "'.$rw_perfil['email'].'<br>
       </p>
-      ';	
+      ';    
 
                    
-             return ($html);	
-			
-	}
+             return ($html);  
+                  
+      }
 }
 ?>
 

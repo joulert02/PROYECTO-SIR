@@ -13,13 +13,13 @@
 		
 		function reportePdfProductos(){			
 			$html="";
-			$sql="select * from tbl_producto order by id_producto desc";
+			$sql="SELECT * FROM tbl_producto ORDER BY id_producto DESC";
 			$rs=mysqli_query($this->conn,$sql);
 			$i=0;
 
 
             $html=$html. '<head>
-             <img src="http://localhost/SIR/public/img/Rodillos GBP.png" style="width: 100px; height: 100px" alt="">
+             <img src="http://localhost:8080/PROYECTO-SIR/SIR/public/img/Rodillos GBP.png" style="width: 100px; height: 100px" alt="">
              <head>';
 			$html=$html.'<div align="center">
 			<h1>Reporte de productos.</h1>

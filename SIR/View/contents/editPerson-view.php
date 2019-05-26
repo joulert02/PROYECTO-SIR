@@ -44,7 +44,7 @@
 </style>
      <br>
 	<div class="container-fluid">
-		<div class="col-md-16">
+		<div class="col-md-10 col-xs-12 col-md-offset-1 mt-1">
       <div class="panel panel-default">
           <div class="panel-heading clearfix">&nbsp&nbsp
              <span class="glyphicon glyphicon-edit fa-fax3 fa-lg"></span>
@@ -142,16 +142,89 @@
 				</div>
 				<div class="col-md-4 mb-3">
 					<label>Dirección</label>
-					<input type="text" name="direccion" class="form-control" data-parsley-length="[4,25]" value="<?php echo $resultado->direccion ?>">
+					<input type="text" name="direccion" class="form-control" required data-parsley-length="[4,25]" value="<?php echo $resultado->direccion ?>">
 				</div>
 				<div class="col-md-4 mb-3">
 					<label>Ciudad</label>
-					<input type="text" name="ciudad" class="form-control" required data-parsley-length="[3,20]" value="<?php echo $resultado->ciudad ?>">
+					<select type="text" name="ciudad" class="custom-select form-control" required >
+					<option style="display: none;" value="<?php echo $resultado->ciudad ?>"selected><?php echo $resultado->ciudad ?></option>
+					<option  disabled>Seleccione Ciudad</option>
+					<option value="Amaga">Amaga</option>
+								<option value="Amalfi">Amalfi</option>
+								<option value="Apartadór">Apartadór</option>
+								<option value="Barbosa">Barbosa</option>
+								<option value="Barranquilla">Barranquilla</option>
+								<option value="Bello">Bello</option>
+								<option value="Bogotá">Bogotá</option>
+								<option value="Bucaramanga">Bucaramanga</option>
+								<option value="Caldas">Caldas</option>
+								<option value="Cali">Cali</option>
+								<option value="Cartagena">Cartagena</option>
+								<option value="Caucasia">Caucasia</option>
+								<option value="Cúcuta">Cúcuta</option>
+								<option value="Envígado">Envígado</option>
+								<option value="Girardota">Girardota</option>
+								<option value="Ibagué">Ibagué</option>
+								<option value="Itaguí">Itaguí</option>
+								<option value="Jericó">Jericó</option>
+								<option value="Marinilla">Marinilla</option>
+								<option value="Medellín">Medellín</option>
+								<option value="Pasto">Pasto</option>
+								<option value="Peñol">Peñol</option>
+								<option value="Remedios">Remedios</option>
+								<option value="Rio Negro">Rio Negro</option>
+								<option value="San Pedro">San Pedro</option>
+								<option value="Santa Fé">Santa Fé</option>
+								<option value="Santa Marta">Santa Marta</option>
+								<option value="Santa Rosa">Santa Rosa</option>
+								<option value="Soacha">Soacha</option>
+								<option value="Soledad">Soledad</option>
+								<option value="Sonsón">Sonsón</option>
+								<option value="Turbo">Turbo</option>
+								<option value="Yarumal">Yarumal</option>
+
+					</select>
 				</div>
 				<div class="col-md-4 mb-3">
-					<label>Departamento</label>
-					<input type="text" name="departamento" class="form-control" required data-parsley-length="[3,20]" value="<?php echo $resultado->departamento ?>"><br>
-				</div>
+							<label>Departamento</label>
+							<select name="departamento" class="custom-select form-control" required >
+								<option style="display: none;" value="<?php echo $resultado->departamento ?>"selected><?php echo $resultado->departamento ?></option>
+								<option disabled>Seleccione departamento</option>
+								<option value="Amazonas">Amazonas</option> 
+								 <option value="Antioquia">Antioquia</option>
+								 <option value="Arauca">Arauca</option>
+								 <option value="Atlántico">Atlántico</option>
+								<option value="Bolívar">Bolívar</option>
+								 <option value="Boyacá">Boyacá</option> 
+								 <option value="Caldas">Caldas</option> 
+								 <option value="Caquetá">Caquetá</option> 
+								 <option value="Casanare">Casanare</option>
+								 <option value="Cauca">Cauca</option>
+								<option value="Cesar">Cesar</option>
+								<option value="Chocó">Chocó</option> 
+								<option value="Córdoba">Córdoba</option>
+								<option value="Cundinamarca">Cundinamarca</option>
+								<option value="Guainía">Guainía</option>
+								 <option value="Guaviare">Guaviare</option>
+								<option value="Huila">Huila</option>
+								 <option value="Guajira">Guajira</option>
+								 <option value="Magdalena">Magdalena</option>
+								 <option value="Meta">Meta</option>
+								<option value="Nariño">Nariño</option>
+								 <option value="Norte de Santander">Norte de Santander</option>
+								<option value="Putumayo">Putumayo</option>
+								 <option value="Quindio">Quindio</option>
+								 <option value="Risaralda">Risaralda</option>
+								 <option value="San Andres">San Andres</option> 
+								 <option value="Santander">Santander</option>
+								<option value="Sucre">Sucre</option>
+								 <option value="Tolima">Tolima</option>
+								 <option value="Valle del Cauca">Valle del Cauca</option>
+								<option value="Vaupés">Vaupés</option>
+								 <option value="Vichada">Vichada</option>
+
+							</select><br>
+						</div>
 				<div class="col-md-4 mb-3">
 							<!-- forma larga y estudipa -->
 					<!-- <label>Tipo Persona</label><br>
@@ -217,7 +290,7 @@
 				<input type="submit" name="actualizar" class="btn btn-primary" value="Actualizar">
 				<input type="reset" value="Limpiar" class="btn btn-secondary">
 				<!-- <button type="submit" class="categoria-cancelar">Cancelar</button> -->
-    		<input type="button" value="Cancelar" class="btn btn-danger"  style="float: right;" onclick="window.close()">
+    		<a href="<?php echo SERVERURL; ?>listPerson" class="btn btn-danger"  style="float: right;">Cancelar</a>
 			</div>
 		</form>
 	</div>

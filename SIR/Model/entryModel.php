@@ -101,6 +101,31 @@ require_once "Controller/categoryController.php";
 			}
 		}
 
+		public function listarReferencias()
+		{
+			$datosEntrys = array();
+			$buscar  = "SELECT pro.referencia FROM tbl_producto pro JOIN tbl_detalle_entrada dt 
+				ON dt.Producto_id_producto = pro.id_producto JOIN tbl_entrada e on e.id_entrada = dt.Entrada_id_entrada WHERE dt.Entrada_id_entrada =77";
+			try{
+				$resultado = $this->conexion->query($buscar);
+				
+
+				foreach ($resultado->fetchAll(PDO::FETCH_OBJ) as $datos) {
+					$entradas = new entryModel();
+					//$entradas->__SET('Entrada_id_entrada', $datos->id_entrada);
+					// $entrada->__SET('nombre_producto', $dato->nombre_producto);
+					// $entrada->__SET('referencia', $dato->referencia);
+					// $entrada->__SET('cantidad', $dato->cantidad);
+					$entradas->__SET('referencia', $datos->referencia);
+
+					$datosEntrys[] = $entradas;
+				}
+				return $datosEntrys;
+			}catch(Exception $e){
+				echo "Error al consultar".$e->getMessage();
+			}
+		}
+
 		public function buscar($id)
 		{
 			$buscar  = "SELECT ent.id_entrada, ent.fecha_entrada, det.cantidad,det.Producto_id_producto,det.entrada_has_prducto FROM tbl_entrada ent, tbl_detalle_entrada det 

@@ -43,6 +43,11 @@ if ($peticionAjax==true) {
 			$entradaModel = new entryModel();
 			return $entradaModel->listar();
 		}
+		public function listarReferencias()
+		{
+			$entradaModel = new entryModel();
+			return $entradaModel->listarReferencias();
+		}
 		public function insertar(entryModel $entrada)
 		{
 			$entradaModel = new entryModel();

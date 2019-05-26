@@ -22,7 +22,7 @@ $data = $conexionbd->query("SELECT * FROM tbl_usuario");
 
 <center>
   <div class="container-fluid">
-
+    <div class="col-md-6 col-xs-12 col-md-offset-3 mt-1">
        <div class="panel profile">
          <div class="jumbotron text-center bg-blue">
              <img class="img-circle img-size-2" src="<?php while ($row = $data->fetch()) {
@@ -38,4 +38,5 @@ $data = $conexionbd->query("SELECT * FROM tbl_usuario");
        </div>
    </div>
 </center>
+</div>
 </div>

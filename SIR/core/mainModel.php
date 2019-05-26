@@ -85,7 +85,7 @@
                             confirmButtonText: 'Aceptar',
                         },
                         function(){
-                            location.reload(); 
+                            window.location.href='".SERVERURL.$datos['url']."'
                         });
                     </script>
                 ";

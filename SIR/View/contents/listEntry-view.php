@@ -4,7 +4,8 @@
 	// $cnx->conectar();
 
 	require_once "Controller/entryController.php";
-	$control = new entryController();
+  $control = new entryController();
+  $control2 = new entryController();
 ?>
 <script>
 
@@ -50,7 +51,8 @@ $(document).ready(function() {
 			<!-- <td scope="col">Nombre Producto</td> -->
 			<!-- <td scope="col">Referencia</td> -->
 			<!-- <td scope="col">Cantidad</td> -->
-			<td scope="col">Fecha Entrada</td>
+      <td scope="col">Fecha Entrada</td>
+      <td scope="col">Referencias</td>
 			<td scope="col">Acciones</td>
 		</tr>
 		</thead>
@@ -63,6 +65,13 @@ $(document).ready(function() {
           <!-- <td><?php //echo $fila->referencia; ?></td> -->
           <!-- <td><?php //echo $fila->cantidad; ?></td> -->
           <td><?php echo $fila->fecha_entrada; ?></td>
+          <td>
+             <?php foreach ($control2->listarReferencias() as $filas):
+        ?>
+            <?php echo $filas->referencia.",  "; ?>
+              <?php endforeach; ?>
+            </td>
+             
           <td>
           <a href="<?php echo SERVERURL; ?>editEntry?id=<?php echo $fila->Entrada_id_entrada; ?>" title="Editar" class='btn btn-primary' ><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
             <?php $_SESSION['id'.$contador]=$fila->Entrada_id_entrada;

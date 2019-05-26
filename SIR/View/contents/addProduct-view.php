@@ -18,7 +18,7 @@ $person = new personController();
 
 <br>        
 <div class="container-fluid">
-    <div class="col-md-16">
+   <div class="col-md-10 col-xs-12 col-md-offset-1 mt-1">
       <div class="panel panel-default">
           <div class="panel-heading clearfix">&nbsp&nbsp
              <span class="glyphicon glyphicon-list fa-fax3 fa-lg"></span>
@@ -26,7 +26,7 @@ $person = new personController();
           </div>
       <div class="panel-body"> 
     <form data-form="save" action="<?php echo SERVERURL; ?>ajax/productAjax.php" method="POST" id="validate_form" class="ml-2 FormularioAjax" autocomplete="off" enctype="multipart/form-data">
-		<p class="RespuestaAjax"></p>	
+    <p class="RespuestaAjax"></p> 
       <div class="form-row">
         <div class="col-md-4 mb-3">
           <label>Referencia*</label>
@@ -44,7 +44,7 @@ $person = new personController();
           <label>Categoria*</label>
           <select name="Categoria_Producto_id_Categoria" class="custom-select form-control" placeholder="Seleccione Estado"  required ="">
           <?php
-					echo'<option value="true" selected disabled>Seleccione estado</option> ';         
+          echo'<option value="true" selected disabled>Seleccione estado</option> ';         
           foreach ($categoria->ListaDatos() as $r) {
             if ($r->estado==1) {
               echo '<option value="'.$r->id_Categoria.'">'.$r->categoria.'</option>';
@@ -73,10 +73,10 @@ $person = new personController();
         <div class="col-md-4 mb-3">
         <label>Estado*</label><br>
           <select name="estado" class="custom-select form-control" required="">
-						<option value="true" selected disabled>Seleccione estado</option>
-						<option value="1">Activo</option>
-						<option value="0">Inactivo</option>
-					</select><br>
+            <option value="true" selected disabled>Seleccione estado</option>
+            <option value="1">Activo</option>
+            <option value="0">Inactivo</option>
+          </select><br>
         </div>
       </div>
       <div class="col-md-12">
@@ -109,9 +109,9 @@ $(document).ready(function(){
 //     $producto->__SET('cantidad',$_POST['cantidad']);
 //     $producto->__SET('estado',$_POST['estado']);
 
-// 	if (($producto->referencia == "")&&($producto->nombre_producto == "")&&($producto->precio_unitario == "")&&($producto->Catedoria_Producto_id_Categoria == "")&&($producto->Persona_id_persona == "")&&($producto->cantidad == "")&&($producto->estado == ""))  
-// 		{
-// 			echo'<script type="text/javascript"> 
+//  if (($producto->referencia == "")&&($producto->nombre_producto == "")&&($producto->precio_unitario == "")&&($producto->Catedoria_Producto_id_Categoria == "")&&($producto->Persona_id_persona == "")&&($producto->cantidad == "")&&($producto->estado == ""))  
+//    {
+//      echo'<script type="text/javascript"> 
 //         swal({title: "ERROR",    
 //              text: "No se púdo registrar el cliente Revise los campos.", 
 //              type:"error", 
@@ -123,8 +123,8 @@ $(document).ready(function(){
 //               });  
 //            </script>';
 //            return false;    
-// 	  }
-// 	  else if ($productoController->insertar($producto)) {
+//    }
+//    else if ($productoController->insertar($producto)) {
 
 //       echo'<script type="text/javascript"> 
 //           swal({title: "LISTO",    
@@ -150,7 +150,7 @@ $(document).ready(function(){
 //               window.location.href="'.SERVERURL.'addProduct/"; 
 //               });  
 //               </script>';    
-// 		?>
+//    ?>
  <!-- <meta http-equiv="refresh" content="0; url=http://localhost/SIR/listProtuct"> -->
  <?php 
 //   }

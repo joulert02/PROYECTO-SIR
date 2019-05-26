@@ -32,7 +32,7 @@ $(document).ready(function() {
 
     <br>
 	<div class="container-fluid">
-    <div class="col-md-16">
+    <div class="col-md-10 col-xs-12 col-md-offset-1 mt-1">
       <div class="panel panel-default">
           <div class="panel-heading clearfix">&nbsp&nbsp
              <span class="glyphicon glyphicon-list fa-fax3 fa-lg"></span>
@@ -82,7 +82,7 @@ $(document).ready(function() {
 					</div>
 
 					<div class="modal-body">
-            <div class="container-fluid">
+            <div class="container-fluid" >
               <div class="table-responsive">
 					<table id="grid" class="table table-striped table-bordered nowrap" style="width:100%">
             <thead style="background-color: #F3F2F2;color: black; font-weight: bold;">
@@ -122,8 +122,8 @@ $(document).ready(function() {
 				</div>
 				</div>
       </div>
-		        <br><br><br>
                   <center>
+                  	<div class="table-responsive" style="margin-top: 8%">
 				<table class="table table-striped table-bordered nowrap" style="width:55%">
             <thead style="background-color: #F3F2F2;color: black; font-weight: bold;">
 						<tr>
@@ -137,6 +137,7 @@ $(document).ready(function() {
 					
 					</tbody>
 					</table>
+				</div>
 				</center>
 
 			
@@ -144,7 +145,7 @@ $(document).ready(function() {
 
 		<div class="col-md-12 mb-3">
 	    <input type="submit" value="registrar" name="registrar" class="btn btn-info">
-      	<a href="<?php echo SERVERURL; ?>listEntry"><input type="button" value="Cancelar" class="btn btn-danger" style="float: right;"></a>
+      	<a href="<?php echo SERVERURL; ?>listExit"><input type="button" value="Cancelar" class="btn btn-danger" style="float: right;"></a>
 		</div>
 	</form>
 </div>
@@ -160,7 +161,7 @@ $(document).ready(function(){
 </script>
 
 
- <script src="http://localhost/SIR/ajax/Salida.js"></script>
+ <script src="http://localhost:8080/PROYECTO-SIR/SIR/ajax/Salida.js"></script>
 
 
 
@@ -232,7 +233,7 @@ if ($CantidadPersonas = (count($contarRegistros)==0)) {
                               });  
                         </script>';    
 		 ?>
-		 <!-- <meta http-equiv="refresh" content="0; url=http://localhost/SIR/listEntry">  -->
+		 <!-- <meta http-equiv="refresh" content="0; url=http://localhost:8080/PROYECTO-SIR/SIR/listEntry">  -->
 <?php 
 	}
 } ?>
